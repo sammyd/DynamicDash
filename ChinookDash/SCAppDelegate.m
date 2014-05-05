@@ -7,12 +7,18 @@
 //
 
 #import "SCAppDelegate.h"
+#import <ShinobiGauges/ShinobiGauges.h>
+#import <ShinobiCharts/ShinobiCharts.h>
 
 @implementation SCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [ShinobiCharts setLicenseKey:@""];
+    [ShinobiGauges setLicenseKey:@""];
+    
     return YES;
 }
 							
