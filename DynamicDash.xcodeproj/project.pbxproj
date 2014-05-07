@@ -30,6 +30,7 @@
 		221F4AC61917CF6700390D6B /* ShinobiGauges.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221F4AC51917CF6700390D6B /* ShinobiGauges.framework */; };
 		221F4AC81917CF7700390D6B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221F4AC71917CF7700390D6B /* libsqlite3.dylib */; };
 		221F4ACC1919292B00390D6B /* SCChinookData.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4ACB1919292B00390D6B /* SCChinookData.m */; };
+		221F4AD5191AF00100390D6B /* northwind.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 221F4AD4191AF00100390D6B /* northwind.sqlite */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		221F4ACB1919292B00390D6B /* SCChinookData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCChinookData.m; sourceTree = "<group>"; };
 		221F4ACF191A5DEC00390D6B /* ShinobiGrids.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiGrids.framework; path = Library/Frameworks/ShinobiGrids.framework; sourceTree = DEVELOPER_DIR; };
 		221F4AD1191A5DF100390D6B /* ShinobiEssentials.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiEssentials.framework; path = Library/Frameworks/ShinobiEssentials.framework; sourceTree = DEVELOPER_DIR; };
+		221F4AD4191AF00100390D6B /* northwind.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = northwind.sqlite; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -205,6 +207,7 @@
 		221F4AC91919291800390D6B /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				221F4AD4191AF00100390D6B /* northwind.sqlite */,
 				221F4ACA1919292B00390D6B /* SCChinookData.h */,
 				221F4ACB1919292B00390D6B /* SCChinookData.m */,
 			);
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				221F4A9D1917CA9600390D6B /* Images.xcassets in Resources */,
+				221F4AD5191AF00100390D6B /* northwind.sqlite in Resources */,
 				221F4A8F1917CA9600390D6B /* InfoPlist.strings in Resources */,
 				221F4A981917CA9600390D6B /* Main.storyboard in Resources */,
 			);
