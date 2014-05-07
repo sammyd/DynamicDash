@@ -7,7 +7,7 @@
 //
 
 #import "SCViewController.h"
-#import "SCChinookData.h"
+#import "SCNorthwindData.h"
 #import <ShinobiCharts/ShinobiChart.h>
 
 @interface SCViewController () <SChartDatasource>
@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    SCChinookData *data = [SCChinookData new];
+    SCNorthwindData *data = [SCNorthwindData new];
     self.datapoints = [data invoiceData];
     
     ShinobiChart *chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds withPrimaryXAxisType:SChartAxisTypeDateTime withPrimaryYAxisType:SChartAxisTypeNumber];

@@ -1,5 +1,5 @@
 //
-//  SCChinookData.h
+//  SCNorthwindData.h
 //  DynamicDash
 //
 //  Created by Sam Davies on 06/05/2014.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SCChinookData : NSObject
+@interface SCNorthwindData : NSObject
 
 - (NSArray *)invoiceData;
 
