@@ -1,0 +1,13 @@
+PODS:
+  - cdebug (0.1.1)
+  - sqlite3-objc (0.2):
+    - cdebug
+
+DEPENDENCIES:
+  - sqlite3-objc (~> 0.2)
+
+SPEC CHECKSUMS:
+  cdebug: e577d5f535bd9c39e91e269bc749b4bbd2e22c99
+  sqlite3-objc: 019b25a09afd1ba90f8e6f0670756f82302d1c8e
+
+COCOAPODS: 0.32.1
