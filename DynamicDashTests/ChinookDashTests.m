@@ -1,6 +1,6 @@
 //
-//  ChinookDashTests.m
-//  ChinookDashTests
+//  DynamicDashTests.m
+//  DynamicDashTests
 //
 //  Created by Sam Davies on 05/05/2014.
 //  Copyright (c) 2014 ShinobiControls. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface ChinookDashTests : XCTestCase
+@interface DynamicDashTests : XCTestCase
 
 @end
 
-@implementation ChinookDashTests
+@implementation DynamicDashTests
 
 - (void)setUp
 {
