@@ -25,6 +25,13 @@
     SCNorthwindData *data = [SCNorthwindData new];
     self.datapoints = [data invoiceData];
     
+    NSLog(@"%@", [data employeeNames]);
+    NSLog(@"%@", [data productCategories]);
+    NSLog(@"%@", [data salesPerCategoryForYear:1997 quarter:2]);
+    NSLog(@"%@", [data salesPerEmployeeForYear:1997 quarter:2]);
+    NSLog(@"%@", [data ordersPerCategoryForYear:1997 quarter:2]);
+    NSLog(@"%@", [data ordersPerEmployeeForYear:1997 quarter:2]);
+    
     ShinobiChart *chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds withPrimaryXAxisType:SChartAxisTypeDateTime withPrimaryYAxisType:SChartAxisTypeNumber];
     chart.autoresizingMask = ~ UIViewAutoresizingNone;
     chart.datasource = self;

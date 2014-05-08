@@ -31,6 +31,8 @@
 		221F4AC81917CF7700390D6B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221F4AC71917CF7700390D6B /* libsqlite3.dylib */; };
 		221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4ACB1919292B00390D6B /* SCNorthwindData.m */; };
 		221F4AD5191AF00100390D6B /* northwind.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 221F4AD4191AF00100390D6B /* northwind.sqlite */; };
+		221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */; };
+		221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AE2191B288300390D6B /* NSDate+Quarterly.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,10 @@
 		221F4ACF191A5DEC00390D6B /* ShinobiGrids.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiGrids.framework; path = Library/Frameworks/ShinobiGrids.framework; sourceTree = DEVELOPER_DIR; };
 		221F4AD1191A5DF100390D6B /* ShinobiEssentials.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiEssentials.framework; path = Library/Frameworks/ShinobiEssentials.framework; sourceTree = DEVELOPER_DIR; };
 		221F4AD4191AF00100390D6B /* northwind.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = northwind.sqlite; sourceTree = "<group>"; };
+		221F4ADD191B10B100390D6B /* SCMultiAxisCategoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMultiAxisCategoryDataSource.h; sourceTree = "<group>"; };
+		221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMultiAxisCategoryDataSource.m; sourceTree = "<group>"; };
+		221F4AE1191B288300390D6B /* NSDate+Quarterly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Quarterly.h"; sourceTree = "<group>"; };
+		221F4AE2191B288300390D6B /* NSDate+Quarterly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Quarterly.m"; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -162,6 +168,8 @@
 		221F4A8A1917CA9600390D6B /* DynamicDash */ = {
 			isa = PBXGroup;
 			children = (
+				221F4AE0191B285B00390D6B /* Utils */,
+				221F4AD6191AF90C00390D6B /* Specialist Charts */,
 				221F4AC91919291800390D6B /* Data Layer */,
 				221F4A931917CA9600390D6B /* SCAppDelegate.h */,
 				221F4A941917CA9600390D6B /* SCAppDelegate.m */,
@@ -212,6 +220,24 @@
 				221F4ACB1919292B00390D6B /* SCNorthwindData.m */,
 			);
 			name = "Data Layer";
+			sourceTree = "<group>";
+		};
+		221F4AD6191AF90C00390D6B /* Specialist Charts */ = {
+			isa = PBXGroup;
+			children = (
+				221F4ADD191B10B100390D6B /* SCMultiAxisCategoryDataSource.h */,
+				221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */,
+			);
+			name = "Specialist Charts";
+			sourceTree = "<group>";
+		};
+		221F4AE0191B285B00390D6B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				221F4AE1191B288300390D6B /* NSDate+Quarterly.h */,
+				221F4AE2191B288300390D6B /* NSDate+Quarterly.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,8 +390,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				221F4A951917CA9600390D6B /* SCAppDelegate.m in Sources */,
+				221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */,
 				221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */,
 				221F4A9B1917CA9600390D6B /* SCViewController.m in Sources */,
+				221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */,
 				221F4A911917CA9600390D6B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
