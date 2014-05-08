@@ -44,6 +44,24 @@
     [self.chart redrawChart];
 }
 
+- (void)animateToValuesInDictionary:(NSDictionary *)dict
+{
+    // We fail silently in all cases
+    [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *values, BOOL *oStop) {
+        // If there aren't enough elements in the array, skip it
+        if([values count] == 2) {
+            NSUInteger dataIndex = [self.categories indexOfObject:key];
+            if(dataIndex != NSNotFound) {
+                [values enumerateObjectsUsingBlock:^(NSNumber *val, NSUInteger seriesIdx, BOOL *iStop) {
+                    [self.datapoints[seriesIdx][dataIndex] setYValue:val];
+                }];
+            }
+        }
+    }];
+    [self.chart reloadData];
+    [self.chart redrawChart];
+}
+
 
 #pragma mark - Non-public methods
 - (void)prepareChart:(ShinobiChart *)chart
@@ -56,6 +74,7 @@
     SChartNumberAxis *secondYAxis = [SChartNumberAxis new];
     secondYAxis.axisPosition = SChartAxisPositionReverse;
     [chart addYAxis:secondYAxis];
+    self.yAxes = @[firstYAxis, secondYAxis];
     
     chart.datasource = self;
     

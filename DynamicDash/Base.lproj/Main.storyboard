@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SCViewController" sceneMemberID="viewController">
@@ -13,13 +14,42 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-tl-TqT" customClass="ShinobiChart">
+                                <rect key="frame" x="20" y="28" width="461" height="362"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="0.30933056327994846" blue="0.42992015482251567" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z40-th-w15" customClass="ShinobiChart">
+                                <rect key="frame" x="20" y="398" width="461" height="362"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.68210315537433064" green="1" blue="0.46133558775835282" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="height" secondItem="z40-th-w15" secondAttribute="height" id="0hG-OH-wVU"/>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="UZh-EZ-VkT"/>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="z40-th-w15" secondAttribute="width" id="W7V-Rx-s2S"/>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.45" id="ahm-Rv-Fo9"/>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" symbolic="YES" id="bLa-Ob-zFs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" constant="20" symbolic="YES" id="gE6-a6-Dsh"/>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="centerX" secondItem="z40-th-w15" secondAttribute="centerX" id="mER-VK-CiA"/>
+                            <constraint firstItem="z40-th-w15" firstAttribute="top" secondItem="gcs-tl-TqT" secondAttribute="bottom" constant="8" symbolic="YES" id="xAC-Md-V0j"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="categoryChart" destination="z40-th-w15" id="xRV-wn-jk5"/>
+                        <outlet property="employeeChart" destination="gcs-tl-TqT" id="i8O-70-H8s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-5" y="-231"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

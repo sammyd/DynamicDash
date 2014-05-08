@@ -102,9 +102,9 @@
                      [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
     
     return [self executeQuery:queryString
-                      withMap:^id(NSDictionary *row) {
-                          return row;
-                      }];
+         withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
+             [dict setValue:row[@"CategorySales"] forKey:row[@"CategoryName"]];
+         }];
 }
 
 - (NSArray *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
@@ -121,9 +121,10 @@
                      [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
     
     return [self executeQuery:queryString
-                      withMap:^id(NSDictionary *row) {
-                          return row;
-                      }];
+         withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
+             NSString *employeeName = [NSString stringWithFormat:@"%@ %@", row[@"FirstName"], row[@"LastName"]];
+             [dict setValue:row[@"EmployeeSales"] forKey:employeeName];
+         }];
 }
 
 - (NSArray *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
@@ -141,9 +142,9 @@
                      [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
     
     return [self executeQuery:queryString
-                      withMap:^id(NSDictionary *row) {
-                          return row;
-                      }];
+         withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
+             [dict setValue:row[@"CategoryOrders"] forKey:row[@"CategoryName"]];
+         }];
 
 }
 
@@ -160,9 +161,10 @@
                      [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
     
     return [self executeQuery:queryString
-                      withMap:^id(NSDictionary *row) {
-                          return row;
-                      }];
+         withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
+             NSString *employeeName = [NSString stringWithFormat:@"%@ %@", row[@"FirstName"], row[@"LastName"]];
+             [dict setValue:row[@"EmployeeOrders"] forKey:employeeName];
+         }];
 }
 
 
@@ -185,6 +187,15 @@
         [mappedResults addObject:map(row)];
     }
     return [mappedResults copy];
+}
+
+- (NSArray *)executeQuery:(NSString *)query withResultDictionary:(void(^)(NSMutableDictionary *dict, NSDictionary *row))map
+{
+    NSMutableDictionary *results = [NSMutableDictionary dictionary];
+    for(NSDictionary *row in [self executeQuery:query]) {
+        map(results, row);
+    }
+    return [results copy];
 }
 
 - (NSArray *)allValuesForQuery:(NSString *)query

@@ -18,5 +18,6 @@
 @property (nonatomic, strong, readonly) NSArray *yAxes;
 
 - (void)animateToValues:(NSArray *)values;
+- (void)animateToValuesInDictionary:(NSDictionary *)dict;
 
 @end

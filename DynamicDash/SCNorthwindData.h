@@ -16,9 +16,9 @@
 - (NSArray *)productCategories;
 - (NSArray *)employeeNames;
 
-- (NSArray *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
-- (NSArray *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
-- (NSArray *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
-- (NSArray *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSDictionary *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSDictionary *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSDictionary *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSDictionary *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 
 @end

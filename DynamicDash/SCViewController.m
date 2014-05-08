@@ -9,10 +9,13 @@
 #import "SCViewController.h"
 #import "SCNorthwindData.h"
 #import <ShinobiCharts/ShinobiChart.h>
+#import "SCMultiAxisCategoryDataSource.h"
 
-@interface SCViewController () <SChartDatasource>
+@interface SCViewController ()
 
-@property (nonatomic, strong) NSArray *datapoints;
+@property (nonatomic, strong) SCNorthwindData *northwind;
+@property (nonatomic, strong) SCMultiAxisCategoryDataSource *categoryDatasource;
+@property (nonatomic, strong) SCMultiAxisCategoryDataSource *employeeDatasource;
 
 @end
 
@@ -22,43 +25,36 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    SCNorthwindData *data = [SCNorthwindData new];
-    self.datapoints = [data invoiceData];
+    self.northwind = [SCNorthwindData new];
+    self.categoryDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.categoryChart categories:[self.northwind productCategories]];
     
-    NSLog(@"%@", [data employeeNames]);
-    NSLog(@"%@", [data productCategories]);
-    NSLog(@"%@", [data salesPerCategoryForYear:1997 quarter:2]);
-    NSLog(@"%@", [data salesPerEmployeeForYear:1997 quarter:2]);
-    NSLog(@"%@", [data ordersPerCategoryForYear:1997 quarter:2]);
-    NSLog(@"%@", [data ordersPerEmployeeForYear:1997 quarter:2]);
+    self.employeeDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.employeeChart categories:[self.northwind employeeNames]];
     
-    ShinobiChart *chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds withPrimaryXAxisType:SChartAxisTypeDateTime withPrimaryYAxisType:SChartAxisTypeNumber];
-    chart.autoresizingMask = ~ UIViewAutoresizingNone;
-    chart.datasource = self;
-    [self.view addSubview:chart];
+    [self setYear:1997 quarter:1];
+}
+
+- (void)setYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    NSDictionary *categorySales = [self.northwind salesPerCategoryForYear:year quarter:quarter];
+    NSDictionary *categoryOrders = [self.northwind ordersPerCategoryForYear:year quarter:quarter];
+    NSMutableDictionary *newCategoryValues = [NSMutableDictionary new];
+    [self.categoryDatasource.categories enumerateObjectsUsingBlock:^(NSString *category, NSUInteger idx, BOOL *stop) {
+        NSArray *newValues = @[categorySales[category], categoryOrders[category]];
+        newCategoryValues[category] = newValues;
+    }];
     
+    [self.categoryDatasource animateToValuesInDictionary:[newCategoryValues copy]];
+    
+    
+    NSDictionary *employeeSales = [self.northwind salesPerEmployeeForYear:year quarter:quarter];
+    NSDictionary *employeeOrders = [self.northwind ordersPerEmployeeForYear:year quarter:quarter];
+    NSMutableDictionary *newEmployeeValues = [NSMutableDictionary new];
+    [self.employeeDatasource.categories enumerateObjectsUsingBlock:^(NSString *employee, NSUInteger idx, BOOL *stop) {
+        NSArray *newValues = @[employeeSales[employee], employeeOrders[employee]];
+        newEmployeeValues[employee] = newValues;
+    }];
+    
+    [self.employeeDatasource animateToValuesInDictionary:[newEmployeeValues copy]];
 }
-
-#pragma mark - SChartDatasource Methods
-- (NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart
-{
-    return 1;
-}
-
-- (SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index
-{
-    return [SChartLineSeries new];
-}
-
-- (NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex
-{
-    return [self.datapoints count];
-}
-
-- (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
-{
-    return self.datapoints[dataIndex];
-}
-
 
 @end
