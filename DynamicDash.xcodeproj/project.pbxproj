@@ -33,6 +33,7 @@
 		221F4AD5191AF00100390D6B /* northwind.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 221F4AD4191AF00100390D6B /* northwind.sqlite */; };
 		221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */; };
 		221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AE2191B288300390D6B /* NSDate+Quarterly.m */; };
+		221F4AE6191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AE5191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,8 @@
 		221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMultiAxisCategoryDataSource.m; sourceTree = "<group>"; };
 		221F4AE1191B288300390D6B /* NSDate+Quarterly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Quarterly.h"; sourceTree = "<group>"; };
 		221F4AE2191B288300390D6B /* NSDate+Quarterly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Quarterly.m"; sourceTree = "<group>"; };
+		221F4AE4191BDCCE00390D6B /* SCNoSpaceCategoryAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNoSpaceCategoryAxis.h; sourceTree = "<group>"; };
+		221F4AE5191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNoSpaceCategoryAxis.m; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -236,6 +239,8 @@
 			children = (
 				221F4AE1191B288300390D6B /* NSDate+Quarterly.h */,
 				221F4AE2191B288300390D6B /* NSDate+Quarterly.m */,
+				221F4AE4191BDCCE00390D6B /* SCNoSpaceCategoryAxis.h */,
+				221F4AE5191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221F4AE6191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m in Sources */,
 				221F4A951917CA9600390D6B /* SCAppDelegate.m in Sources */,
 				221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */,
 				221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */,
