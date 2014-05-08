@@ -10,6 +10,8 @@
 #import "SCNorthwindData.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "SCMultiAxisCategoryDataSource.h"
+#import "SCBlueColourTheme.h"
+#import "SCColourableChartTheme.h"
 
 @interface SCViewController ()
 
@@ -29,6 +31,8 @@
     self.categoryDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.categoryChart categories:[self.northwind productCategories]];
     
     self.employeeDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.employeeChart categories:[self.northwind employeeNames]];
+    
+    [self setColourTheme:[SCBlueColourTheme new]];
     
     [self setYear:1997 quarter:1];
 }
@@ -55,6 +59,16 @@
     }];
     
     [self.employeeDatasource animateToValuesInDictionary:[newEmployeeValues copy]];
+}
+
+#pragma mark - Utility Methods
+- (void)setColourTheme:(id<SCColourTheme>)colourTheme
+{
+    self.view.backgroundColor = colourTheme.darkColour;
+    [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
+    [self.categoryDatasource applyTheme:colourTheme];
+    [self.employeeChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
+    [self.employeeDatasource applyTheme:colourTheme];
 }
 
 @end

@@ -15,6 +15,9 @@
 @property (nonatomic, strong, readwrite) NSArray *categories;
 @property (nonatomic, strong, readwrite) NSArray *yAxes;
 @property (nonatomic, strong) NSArray *datapoints;
+@property (nonatomic, strong) SChartLineSeries *lineSeries;
+@property (nonatomic, strong) SChartColumnSeries *columnSeries;
+
 
 @end
 
@@ -63,6 +66,21 @@
     [self.chart redrawChart];
 }
 
+- (void)applyTheme:(id<SCColourTheme>)theme
+{
+    self.lineSeries.style.lineColor = theme.midLightColour;
+    self.lineSeries.style.lineWidth = @4;
+    self.columnSeries.style.areaColor = theme.midDarkColour;
+    self.columnSeries.style.areaColorGradient = theme.midDarkColour;
+    self.columnSeries.style.dataPointLabelStyle.textColor = theme.darkColour;
+    
+    SChartAxis *leftYAxis = self.yAxes[0];
+    leftYAxis.style.majorTickStyle.showLabels = NO;
+    
+    SChartAxis *rightYAxis = self.yAxes[1];
+    rightYAxis.style.majorTickStyle.textAlignment = NSTextAlignmentLeft;
+}
+
 
 #pragma mark - Non-public methods
 - (void)prepareChart:(ShinobiChart *)chart
@@ -74,7 +92,6 @@
     SChartNumberAxis *firstYAxis = [SChartNumberAxis new];
     [chart addYAxis:firstYAxis];
     firstYAxis.rangePaddingHigh = @(5000);
-    firstYAxis.style.majorTickStyle.showLabels = NO;
     SChartNumberAxis *secondYAxis = [SChartNumberAxis new];
     secondYAxis.axisPosition = SChartAxisPositionReverse;
     secondYAxis.rangePaddingHigh = @(2);
@@ -123,6 +140,26 @@
     }];
 }
 
+- (SChartLineSeries *)lineSeries
+{
+    if(!_lineSeries) {
+        _lineSeries = [SChartLineSeries new];
+        _lineSeries.baseline = @0;
+    }
+    return _lineSeries;
+}
+
+- (SChartColumnSeries *)columnSeries
+{
+    if(!_columnSeries) {
+        _columnSeries = [SChartColumnSeries new];
+        _columnSeries.baseline = @0;
+        _columnSeries.style.dataPointLabelStyle.showLabels = YES;
+        _columnSeries.style.dataPointLabelStyle.offsetFromDataPoint = CGPointMake(0, -10);
+    }
+    return _columnSeries;
+}
+
 
 #pragma mark - SChartDatasource methods
 - (NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart
@@ -132,25 +169,17 @@
 
 - (SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index
 {
-    SChartCartesianSeries *series;
-    
     switch (index) {
         case 0:
-            series = [SChartColumnSeries new];
-            ((SChartColumnSeries *)series).style.dataPointLabelStyle.showLabels = YES;
-            ((SChartColumnSeries *)series).style.dataPointLabelStyle.offsetFromDataPoint = CGPointMake(0, -10);
+            return self.columnSeries;
             break;
-            
         case 1:
-            series = [SChartLineSeries new];
+            return self.lineSeries;
             break;
         default:
             return nil;
             break;
     }
-    
-    series.baseline = @0;
-    return series;
 }
 
 - (NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex

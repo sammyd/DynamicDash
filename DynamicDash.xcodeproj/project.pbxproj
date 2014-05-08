@@ -34,6 +34,9 @@
 		221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */; };
 		221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AE2191B288300390D6B /* NSDate+Quarterly.m */; };
 		221F4AE6191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AE5191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m */; };
+		221F4AED191C124100390D6B /* SCBlueColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AEC191C124100390D6B /* SCBlueColourTheme.m */; };
+		221F4AF1191C152700390D6B /* UIColor+IntegerColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AF0191C152700390D6B /* UIColor+IntegerColours.m */; };
+		221F4AF4191C193B00390D6B /* SCColourableChartTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AF3191C193B00390D6B /* SCColourableChartTheme.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +89,13 @@
 		221F4AE2191B288300390D6B /* NSDate+Quarterly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Quarterly.m"; sourceTree = "<group>"; };
 		221F4AE4191BDCCE00390D6B /* SCNoSpaceCategoryAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNoSpaceCategoryAxis.h; sourceTree = "<group>"; };
 		221F4AE5191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNoSpaceCategoryAxis.m; sourceTree = "<group>"; };
+		221F4AE8191C100A00390D6B /* SCColourTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCColourTheme.h; sourceTree = "<group>"; };
+		221F4AEB191C124100390D6B /* SCBlueColourTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBlueColourTheme.h; sourceTree = "<group>"; };
+		221F4AEC191C124100390D6B /* SCBlueColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBlueColourTheme.m; sourceTree = "<group>"; };
+		221F4AEF191C152700390D6B /* UIColor+IntegerColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+IntegerColours.h"; sourceTree = "<group>"; };
+		221F4AF0191C152700390D6B /* UIColor+IntegerColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+IntegerColours.m"; sourceTree = "<group>"; };
+		221F4AF2191C193B00390D6B /* SCColourableChartTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCColourableChartTheme.h; sourceTree = "<group>"; };
+		221F4AF3191C193B00390D6B /* SCColourableChartTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCColourableChartTheme.m; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -171,6 +181,7 @@
 		221F4A8A1917CA9600390D6B /* DynamicDash */ = {
 			isa = PBXGroup;
 			children = (
+				221F4AE7191C0FF800390D6B /* Colours */,
 				221F4AE0191B285B00390D6B /* Utils */,
 				221F4AD6191AF90C00390D6B /* Specialist Charts */,
 				221F4AC91919291800390D6B /* Data Layer */,
@@ -243,6 +254,20 @@
 				221F4AE5191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		221F4AE7191C0FF800390D6B /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				221F4AE8191C100A00390D6B /* SCColourTheme.h */,
+				221F4AEB191C124100390D6B /* SCBlueColourTheme.h */,
+				221F4AEC191C124100390D6B /* SCBlueColourTheme.m */,
+				221F4AEF191C152700390D6B /* UIColor+IntegerColours.h */,
+				221F4AF0191C152700390D6B /* UIColor+IntegerColours.m */,
+				221F4AF2191C193B00390D6B /* SCColourableChartTheme.h */,
+				221F4AF3191C193B00390D6B /* SCColourableChartTheme.m */,
+			);
+			name = Colours;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,7 +425,10 @@
 				221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */,
 				221F4A9B1917CA9600390D6B /* SCViewController.m in Sources */,
 				221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */,
+				221F4AF4191C193B00390D6B /* SCColourableChartTheme.m in Sources */,
+				221F4AF1191C152700390D6B /* UIColor+IntegerColours.m in Sources */,
 				221F4A911917CA9600390D6B /* main.m in Sources */,
+				221F4AED191C124100390D6B /* SCBlueColourTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
