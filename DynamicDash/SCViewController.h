@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ShinobiCharts/ShinobiChart.h>
+#import <ShinobiGauges/ShinobiGauges.h>
 
 @interface SCViewController : UIViewController
 
@@ -17,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *quarterSegment;
 - (IBAction)handleSegmentChanged:(id)sender;
 
+@property (weak, nonatomic) IBOutlet SGaugeRadial *ordersGauge;
+@property (weak, nonatomic) IBOutlet SGaugeRadial *salesGauge;
 @end

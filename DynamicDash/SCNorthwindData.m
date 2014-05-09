@@ -167,6 +167,20 @@
          }];
 }
 
+- (NSNumber *)totalOrdersForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    NSDictionary *ordersPerCategory = [self ordersPerCategoryForYear:year quarter:quarter];
+    NSArray *orders = [ordersPerCategory allValues];
+    return [orders valueForKeyPath:@"@sum.self"];
+}
+
+- (NSNumber *)totalSalesForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    NSDictionary *salesPerCategory = [self salesPerCategoryForYear:year quarter:quarter];
+    NSArray *sales = [salesPerCategory allValues];
+    return [sales valueForKeyPath:@"@sum.self"];
+}
+
 
 #pragma mark - Non-API methods
 - (SLStatement *)executeQuery:(NSString *)query

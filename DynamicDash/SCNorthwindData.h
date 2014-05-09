@@ -20,5 +20,7 @@
 - (NSDictionary *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSNumber *)totalOrdersForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSNumber *)totalSalesForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 
 @end

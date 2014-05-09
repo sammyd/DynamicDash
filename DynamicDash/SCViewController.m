@@ -34,6 +34,12 @@
     
     [self setColourTheme:[SCBlueColourTheme new]];
     
+    self.ordersGauge.minimumValue = @0;
+    self.ordersGauge.maximumValue = @450;
+    self.salesGauge.minimumValue = @0;
+    self.salesGauge.maximumValue = @300000;
+    
+    
     [self setYear:1997 quarter:1];
 }
 
@@ -63,6 +69,9 @@
     }];
     
     [self.employeeDatasource animateToValuesInDictionary:[newEmployeeValues copy]];
+    
+    [self.salesGauge setValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue] duration:1];
+    [self.ordersGauge setValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue] duration:1];
 }
 
 #pragma mark - Utility Methods
