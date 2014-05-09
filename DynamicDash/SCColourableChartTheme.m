@@ -20,9 +20,9 @@
     self = [super init];
     if(self) {
         // Set some chart colors
-        self.chartStyle.backgroundColor = theme.midColour;
-        self.chartStyle.plotAreaBackgroundColor = theme.midColour;
-        self.chartStyle.canvasBackgroundColor = theme.midColour;
+        self.chartStyle.backgroundColor = [UIColor clearColor];
+        self.chartStyle.plotAreaBackgroundColor = [UIColor clearColor];
+        self.chartStyle.canvasBackgroundColor = [UIColor clearColor];
         
         // Axis settings
         self.xAxisStyle.lineColor = theme.darkColour;
