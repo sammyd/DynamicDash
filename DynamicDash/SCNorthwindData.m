@@ -78,6 +78,14 @@
     }];
 }
 
+- (NSArray *)shippers
+{
+    return [self executeQuery:@"SELECT CompanyName FROM Shippers"
+                      withMap:^id(NSDictionary *row) {
+                          return row[@"CompanyName"];
+                      }];
+}
+
 - (NSDateFormatter *)ymdDF
 {
     if(!_ymdDF) {
@@ -87,7 +95,7 @@
     return _ymdDF;
 }
 
-- (NSArray *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
 {
     NSString *queryString = [NSString stringWithFormat:
         @"SELECT Categories.CategoryName, "
@@ -107,7 +115,7 @@
          }];
 }
 
-- (NSArray *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
 {
     NSString *queryString = [NSString stringWithFormat:
          @"SELECT Employees.FirstName, Employees.LastName, "
@@ -127,7 +135,7 @@
          }];
 }
 
-- (NSArray *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
 {
     NSString *queryString = [NSString stringWithFormat:
          @"SELECT Categories.CategoryName, "
@@ -148,7 +156,7 @@
 
 }
 
-- (NSArray *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
 {
     NSString *queryString = [NSString stringWithFormat:
          @"SELECT Employees.FirstName, Employees.LastName, "
@@ -181,6 +189,24 @@
     return [sales valueForKeyPath:@"@sum.self"];
 }
 
+- (NSDictionary *)ordersPerShipperForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    NSString *queryString = [NSString stringWithFormat:
+         @"SELECT Shippers.CompanyName, "
+          "Count(Orders.OrderID) AS ShipperOrders "
+          "FROM Shippers "
+          "JOIN    Orders ON Orders.ShipVia = Shippers.ShipperID "
+          "WHERE Orders.ShippedDate BETWEEN DATETIME('%@') AND DATETIME('%@') "
+          "GROUP BY Shippers.ShipperID",
+          [self.ymdDF stringFromDate:[NSDate firstDayOfQuarter:quarter year:year]],
+          [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
+    return [self executeQuery:queryString
+         withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
+             [dict setValue:row[@"ShipperOrders"] forKey:row[@"CompanyName"]];
+         }];
+    
+}
+
 
 #pragma mark - Non-API methods
 - (SLStatement *)executeQuery:(NSString *)query
@@ -203,7 +229,7 @@
     return [mappedResults copy];
 }
 
-- (NSArray *)executeQuery:(NSString *)query withResultDictionary:(void(^)(NSMutableDictionary *dict, NSDictionary *row))map
+- (NSDictionary *)executeQuery:(NSString *)query withResultDictionary:(void(^)(NSMutableDictionary *dict, NSDictionary *row))map
 {
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
     for(NSDictionary *row in [self executeQuery:query]) {
