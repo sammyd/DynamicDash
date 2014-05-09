@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ShinobiCharts/ShinobiChart.h>
+#import "SCColourTheme.h"
 
 @interface SCAnimatingPieChartDatasource : NSObject
 
@@ -16,6 +17,6 @@
 
 - (instancetype)initWithChart:(ShinobiChart *)chart categories:(NSArray *)categories;
 - (void)animateToValuesInDictionary:(NSDictionary *)dict;
-
+- (void)applyTheme:(id<SCColourTheme>)theme;
 
 @end

@@ -95,6 +95,8 @@
     [self.employeeChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.employeeDatasource applyTheme:colourTheme];
     self.employeeChart.backgroundColor = colourTheme.midColour;
+    [self.shippersChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
+    [self.shippersDatasource applyTheme:colourTheme];
     
     // Apply theme to the gauge
     [self styleGauge:self.salesGauge withColourTheme:colourTheme background:colourTheme.midLightColour];

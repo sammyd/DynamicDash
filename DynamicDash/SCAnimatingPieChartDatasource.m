@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSArray *categories;
 @property (nonatomic, strong) NSArray *datapoints;
 @property (nonatomic, strong) ShinobiChart *chart;
+@property (nonatomic, strong) SChartPieSeries *series;
 @property (nonatomic, strong) POPAnimatableProperty *animateableValuesProperty;
 
 @end
@@ -75,6 +76,22 @@
     }];
 }
 
+- (void)applyTheme:(id<SCColourTheme>)theme
+{
+    self.series.style.flavourColors = [NSMutableArray arrayWithArray:@[theme.midColour, theme.midLightColour, theme.lightColour]];
+    self.series.style.labelFontColor = theme.darkColour;
+    self.series.style.showLabels = YES;
+    self.chart.backgroundColor = theme.midDarkColour;
+}
+
+- (SChartPieSeries *)series
+{
+    if(!_series) {
+        _series = [SChartPieSeries new];
+    }
+    return _series;
+}
+
 #pragma mark - Utility methods
 - (void)animateDataPoint:(SChartDataPoint *)dp toValue:(NSNumber *)value
 {
@@ -96,7 +113,7 @@
 
 - (SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index
 {
-    return [SChartPieSeries new];
+    return self.series;
 }
 
 - (NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex
