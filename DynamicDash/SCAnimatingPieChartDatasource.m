@@ -9,7 +9,7 @@
 #import "SCAnimatingPieChartDatasource.h"
 #import <POP/POP.h>
 
-@interface SCAnimatingPieChartDatasource () <SChartDatasource>
+@interface SCAnimatingPieChartDatasource () <SChartDatasource, SChartDelegate>
 
 @property (nonatomic, strong) NSArray *categories;
 @property (nonatomic, strong) NSArray *datapoints;
@@ -27,6 +27,7 @@
         self.categories = categories;
         self.chart = chart;
         self.chart.datasource = self;
+        self.chart.delegate = self;
         [self prepareDatapoints];
         
         self.springBounciness = 16.0;
@@ -106,6 +107,13 @@
 - (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
 {
     return self.datapoints[dataIndex];
+}
+
+#pragma mark - SChartDelegate methods
+- (void)sChart:(ShinobiChart *)chart alterLabel:(UILabel *)label forDatapoint:(SChartRadialDataPoint *)datapoint atSliceIndex:(NSInteger)index inRadialSeries:(SChartRadialSeries *)series
+{
+    label.text = datapoint.name;
+    [label sizeToFit];
 }
 
 @end
