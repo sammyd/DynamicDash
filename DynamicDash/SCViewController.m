@@ -12,6 +12,7 @@
 #import "SCMultiAxisCategoryDataSource.h"
 #import "SCBlueColourTheme.h"
 #import "SCColourableChartTheme.h"
+#import "SGauge+SpringAnimation.h"
 
 @interface SCViewController ()
 
@@ -70,8 +71,9 @@
     
     [self.employeeDatasource animateToValuesInDictionary:[newEmployeeValues copy]];
     
-    [self.salesGauge setValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue] duration:1];
-    [self.ordersGauge setValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue] duration:1];
+    
+    [self.salesGauge springAnimateToValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue]];
+    [self.ordersGauge springAnimateToValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue]];
 }
 
 #pragma mark - Utility Methods
