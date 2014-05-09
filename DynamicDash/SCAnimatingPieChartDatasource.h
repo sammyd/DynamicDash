@@ -12,9 +12,6 @@
 
 @interface SCAnimatingPieChartDatasource : NSObject
 
-@property (nonatomic, assign) CGFloat springBounciness;
-@property (nonatomic, assign) CGFloat springSpeed;
-
 - (instancetype)initWithChart:(ShinobiChart *)chart categories:(NSArray *)categories;
 - (void)animateToValuesInDictionary:(NSDictionary *)dict;
 - (void)applyTheme:(id<SCColourTheme>)theme;

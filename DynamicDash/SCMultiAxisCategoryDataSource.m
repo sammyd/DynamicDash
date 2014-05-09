@@ -8,7 +8,7 @@
 
 #import "SCMultiAxisCategoryDataSource.h"
 #import "SCNoSpaceCategoryAxis.h"
-#import <POP/POP.h>
+#import "SCDataPointAnimator.h"
 
 @interface SCMultiAxisCategoryDataSource () <SChartDatasource, SChartDelegate>
 
@@ -18,8 +18,7 @@
 @property (nonatomic, strong) NSArray *datapoints;
 @property (nonatomic, strong) SChartLineSeries *lineSeries;
 @property (nonatomic, strong) SChartColumnSeries *columnSeries;
-@property (nonatomic, strong) POPAnimatableProperty *animateableValuesProperty;
-
+@property (nonatomic, strong) SCDataPointAnimator *dpAnimator;
 
 @end
 
@@ -33,21 +32,9 @@
         self.categories = categories;
         [self prepareDataPoints];
         
-        self.springBounciness = 16.0;
-        self.springSpeed = 4.0;
-        self.animateableValuesProperty = [POPAnimatableProperty propertyWithName:@"com.shinobicontrols.popgoesshinobi.animatingdatasource" initializer:^(POPMutableAnimatableProperty *prop) {
-            // read value
-            prop.readBlock = ^(SChartDataPoint *dp, CGFloat values[]) {
-                values[0] = [dp.yValue floatValue];
-            };
-            // write value
-            prop.writeBlock = ^(SChartDataPoint *dp, const CGFloat values[]) {
-                dp.yValue = @(MAX(values[0], 0));
-                [self.chart reloadData];
-                [self.chart redrawChart];
-            };
-            // dynamics threshold
-            prop.threshold = 0.01;
+        self.dpAnimator = [[SCDataPointAnimator alloc] initWithPostWriteCallback:^{
+            [self.chart reloadData];
+            [self.chart redrawChart];
         }];
     }
     return self;
@@ -61,7 +48,7 @@
     [values enumerateObjectsUsingBlock:^(NSArray *dpValues, NSUInteger seriesIdx, BOOL *oStop) {
         [dpValues enumerateObjectsUsingBlock:^(NSNumber *value, NSUInteger dataIdx, BOOL *iStop) {
             SChartDataPoint *dp = self.datapoints[seriesIdx][dataIdx];
-            [self animateDataPoint:dp toValue:value];
+            [self.dpAnimator animateDatapoint:dp toValue:value];
         }];
     }];
 }
@@ -75,7 +62,7 @@
             NSUInteger dataIndex = [self.categories indexOfObject:key];
             if(dataIndex != NSNotFound) {
                 [values enumerateObjectsUsingBlock:^(NSNumber *val, NSUInteger seriesIdx, BOOL *iStop) {
-                    [self animateDataPoint:self.datapoints[seriesIdx][dataIndex] toValue:val];
+                    [self.dpAnimator animateDatapoint:self.datapoints[seriesIdx][dataIndex] toValue:val];
                 }];
             }
         }
@@ -99,19 +86,6 @@
 
 
 #pragma mark - Non-public methods
-- (void)animateDataPoint:(SChartDataPoint *)dp toValue:(NSNumber *)value
-{
-    POPSpringAnimation *anim = [POPSpringAnimation animation];
-    anim.property = self.animateableValuesProperty;
-    anim.fromValue = dp.yValue;
-    anim.toValue = value;
-    anim.springBounciness = self.springBounciness;
-    anim.springSpeed = self.springSpeed;
-    
-    [dp pop_addAnimation:anim forKey:@"ValueChangeAnimation"];
-}
-
-
 - (void)prepareChart:(ShinobiChart *)chart
 {
     SChartCategoryAxis *xAxis = [SCNoSpaceCategoryAxis new];

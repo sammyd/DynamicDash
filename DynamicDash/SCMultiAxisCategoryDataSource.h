@@ -17,8 +17,6 @@
 @property (nonatomic, strong, readonly) ShinobiChart *chart;
 @property (nonatomic, strong, readonly) NSArray *categories;
 @property (nonatomic, strong, readonly) NSArray *yAxes;
-@property (nonatomic, assign) CGFloat springBounciness;
-@property (nonatomic, assign) CGFloat springSpeed;
 
 - (void)animateToValues:(NSArray *)values;
 - (void)animateToValuesInDictionary:(NSDictionary *)dict;
