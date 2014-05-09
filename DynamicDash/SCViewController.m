@@ -43,7 +43,9 @@
     NSDictionary *categoryOrders = [self.northwind ordersPerCategoryForYear:year quarter:quarter];
     NSMutableDictionary *newCategoryValues = [NSMutableDictionary new];
     [self.categoryDatasource.categories enumerateObjectsUsingBlock:^(NSString *category, NSUInteger idx, BOOL *stop) {
-        NSArray *newValues = @[categorySales[category], categoryOrders[category]];
+        NSNumber *sales = categorySales[category] ? categorySales[category] : @0;
+        NSNumber *orders = categoryOrders[category] ? categoryOrders[category] : @0;
+        NSArray *newValues = @[sales, orders];
         newCategoryValues[category] = newValues;
     }];
     
@@ -54,7 +56,9 @@
     NSDictionary *employeeOrders = [self.northwind ordersPerEmployeeForYear:year quarter:quarter];
     NSMutableDictionary *newEmployeeValues = [NSMutableDictionary new];
     [self.employeeDatasource.categories enumerateObjectsUsingBlock:^(NSString *employee, NSUInteger idx, BOOL *stop) {
-        NSArray *newValues = @[employeeSales[employee], employeeOrders[employee]];
+        NSNumber *sales = employeeSales[employee] ? employeeSales[employee] : @0;
+        NSNumber *orders = employeeOrders[employee] ? employeeOrders[employee] : @0;
+        NSArray *newValues = @[sales, orders];
         newEmployeeValues[employee] = newValues;
     }];
     
@@ -71,4 +75,8 @@
     [self.employeeDatasource applyTheme:colourTheme];
 }
 
+- (IBAction)handleSegmentChanged:(id)sender {
+    [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
+          quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
+}
 @end

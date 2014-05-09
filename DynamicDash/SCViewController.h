@@ -13,5 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet ShinobiChart *employeeChart;
 @property (weak, nonatomic) IBOutlet ShinobiChart *categoryChart;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *yearSegment;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *quarterSegment;
+- (IBAction)handleSegmentChanged:(id)sender;
 
 @end

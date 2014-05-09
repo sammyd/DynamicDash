@@ -27,10 +27,38 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.68210315537433064" green="1" blue="0.46133558775835282" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Jt-Xo-Rt8">
+                                <rect key="frame" x="489" y="28" width="134" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1996"/>
+                                    <segment title="1997"/>
+                                    <segment title="1998"/>
+                                </segments>
+                                <connections>
+                                    <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="A5v-de-DI0"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eaZ-eX-GAT">
+                                <rect key="frame" x="631" y="28" width="131" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Q1"/>
+                                    <segment title="Q2"/>
+                                    <segment title="Q3"/>
+                                    <segment title="Q4"/>
+                                </segments>
+                                <connections>
+                                    <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ur2-x9-n4j"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="height" secondItem="z40-th-w15" secondAttribute="height" id="0hG-OH-wVU"/>
+                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="top" secondItem="eaZ-eX-GAT" secondAttribute="top" id="2LW-KI-BQZ"/>
+                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="gcs-tl-TqT" secondAttribute="trailing" constant="8" symbolic="YES" id="6zN-3p-kBw"/>
+                            <constraint firstItem="eaZ-eX-GAT" firstAttribute="leading" secondItem="2Jt-Xo-Rt8" secondAttribute="trailing" constant="8" symbolic="YES" id="FD8-iF-KsF"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="UZh-EZ-VkT"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="z40-th-w15" secondAttribute="width" id="W7V-Rx-s2S"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.45" id="ahm-Rv-Fo9"/>
@@ -38,6 +66,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" constant="20" symbolic="YES" id="gE6-a6-Dsh"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="centerX" secondItem="z40-th-w15" secondAttribute="centerX" id="mER-VK-CiA"/>
                             <constraint firstItem="z40-th-w15" firstAttribute="top" secondItem="gcs-tl-TqT" secondAttribute="bottom" constant="8" symbolic="YES" id="xAC-Md-V0j"/>
+                            <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="2Jt-Xo-Rt8" secondAttribute="top" id="xWz-pA-tHZ"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -45,6 +74,8 @@
                     <connections>
                         <outlet property="categoryChart" destination="z40-th-w15" id="xRV-wn-jk5"/>
                         <outlet property="employeeChart" destination="gcs-tl-TqT" id="i8O-70-H8s"/>
+                        <outlet property="quarterSegment" destination="eaZ-eX-GAT" id="RDj-lo-tOF"/>
+                        <outlet property="yearSegment" destination="2Jt-Xo-Rt8" id="W7Y-QV-QCK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
