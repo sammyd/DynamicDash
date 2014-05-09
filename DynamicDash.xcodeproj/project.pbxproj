@@ -38,6 +38,7 @@
 		221F4AF1191C152700390D6B /* UIColor+IntegerColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AF0191C152700390D6B /* UIColor+IntegerColours.m */; };
 		221F4AF4191C193B00390D6B /* SCColourableChartTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AF3191C193B00390D6B /* SCColourableChartTheme.m */; };
 		221F4AF8191D1FDC00390D6B /* SGauge+SpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AF7191D1FDC00390D6B /* SGauge+SpringAnimation.m */; };
+		221F4AFB191D63D800390D6B /* SCAnimatingPieChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,8 @@
 		221F4AF3191C193B00390D6B /* SCColourableChartTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCColourableChartTheme.m; sourceTree = "<group>"; };
 		221F4AF6191D1FDC00390D6B /* SGauge+SpringAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SGauge+SpringAnimation.h"; sourceTree = "<group>"; };
 		221F4AF7191D1FDC00390D6B /* SGauge+SpringAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SGauge+SpringAnimation.m"; sourceTree = "<group>"; };
+		221F4AF9191D63D800390D6B /* SCAnimatingPieChartDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimatingPieChartDatasource.h; sourceTree = "<group>"; };
+		221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimatingPieChartDatasource.m; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -245,6 +248,8 @@
 			children = (
 				221F4ADD191B10B100390D6B /* SCMultiAxisCategoryDataSource.h */,
 				221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */,
+				221F4AF9191D63D800390D6B /* SCAnimatingPieChartDatasource.h */,
+				221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */,
 			);
 			name = "Specialist Charts";
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 				221F4AF1191C152700390D6B /* UIColor+IntegerColours.m in Sources */,
 				221F4A911917CA9600390D6B /* main.m in Sources */,
 				221F4AED191C124100390D6B /* SCBlueColourTheme.m in Sources */,
+				221F4AFB191D63D800390D6B /* SCAnimatingPieChartDatasource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

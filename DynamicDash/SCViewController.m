@@ -13,12 +13,14 @@
 #import "SCBlueColourTheme.h"
 #import "SCColourableChartTheme.h"
 #import "SGauge+SpringAnimation.h"
+#import "SCAnimatingPieChartDatasource.h"
 
 @interface SCViewController ()
 
 @property (nonatomic, strong) SCNorthwindData *northwind;
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *categoryDatasource;
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *employeeDatasource;
+@property (nonatomic, strong) SCAnimatingPieChartDatasource *shippersDatasource;
 
 @end
 
@@ -33,12 +35,16 @@
     
     self.employeeDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.employeeChart categories:[self.northwind employeeNames]];
     
+    self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
+    
     [self setColourTheme:[SCBlueColourTheme new]];
     
     self.ordersGauge.minimumValue = @0;
     self.ordersGauge.maximumValue = @450;
     self.salesGauge.minimumValue = @0;
     self.salesGauge.maximumValue = @300000;
+    
+    NSLog(@"%@", [self.northwind ordersPerShipperForYear:1997 quarter:1]);
     
     
     [self setYear:1997 quarter:1];
@@ -74,6 +80,9 @@
     
     [self.salesGauge springAnimateToValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue]];
     [self.ordersGauge springAnimateToValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue]];
+    
+    NSDictionary *shipperOrders = [self.northwind ordersPerShipperForYear:year quarter:quarter];
+    [self.shippersDatasource animateToValuesInDictionary:shipperOrders];
 }
 
 #pragma mark - Utility Methods

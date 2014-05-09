@@ -20,4 +20,5 @@
 
 @property (weak, nonatomic) IBOutlet SGaugeRadial *ordersGauge;
 @property (weak, nonatomic) IBOutlet SGaugeRadial *salesGauge;
+@property (weak, nonatomic) IBOutlet ShinobiChart *shippersChart;
 @end
