@@ -7,9 +7,11 @@
 //
 
 #import <ShinobiCharts/ShinobiChart.h>
+#import "SCColourTheme.h"
 
 @interface SCRangeHighlightChart : ShinobiChart
 
 - (void)setData:(NSDictionary *)data;
+- (void)applyColourTheme:(id<SCColourTheme>)theme;
 
 @end
