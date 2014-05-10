@@ -55,23 +55,60 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-Ce-E0e" customClass="SGaugeRadial">
                                 <rect key="frame" x="512" y="28" width="256" height="259"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="orders in quarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dp-k3-sCV">
+                                        <rect key="frame" x="65" y="218" width="127" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.34635903587795402" green="0.16293370376413441" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9dp-k3-sCV" secondAttribute="bottom" constant="20" symbolic="YES" id="Dnp-H1-HHm"/>
+                                    <constraint firstAttribute="centerX" secondItem="9dp-k3-sCV" secondAttribute="centerX" id="xjG-iX-EeF"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
-                                <rect key="frame" x="768" y="27" width="256" height="260"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
+                                <rect key="frame" x="768" y="28" width="257" height="259"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sales in quarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adb-Ux-AKM">
+                                        <rect key="frame" x="70" y="218" width="118" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.42570171027816595" green="1" blue="0.83288257846354485" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Adb-Ux-AKM" secondAttribute="bottom" constant="20" symbolic="YES" id="ErM-DH-mfu"/>
+                                    <constraint firstAttribute="centerX" secondItem="Adb-Ux-AKM" secondAttribute="centerX" constant="-0.5" id="VtW-Th-nuO"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
-                                <rect key="frame" x="512" y="287" width="256" height="260"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
+                                <rect key="frame" x="512" y="287" width="256" height="259"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.81655546494562947" green="0.1942063830382974" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-HF-qhN" customClass="SCRangeHighlightChart">
-                                <rect key="frame" x="512" y="547" width="512" height="221"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-HF-qhN" customClass="SCRangeHighlightChart">
+                                <rect key="frame" x="512" y="546" width="512" height="222"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.66261010898712125" green="1" blue="0.9187821845158326" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-QH-L34">
+                                <rect key="frame" x="768" y="359" width="103" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Blue"/>
+                                    <segment title="Green"/>
+                                </segments>
+                                <connections>
+                                    <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uLP-q3-KMF"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -83,12 +120,14 @@
                             <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="GsH-Tk-AkE" secondAttribute="trailing" id="TV9-Um-6hw"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RqQ-HF-qhN" secondAttribute="bottom" id="UUK-EK-n44"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UZh-EZ-VkT"/>
+                            <constraint firstItem="eaZ-eX-GAT" firstAttribute="leading" secondItem="nEd-QH-L34" secondAttribute="leading" id="W0n-Eh-th0"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.25" id="W3c-4q-FmJ"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="z40-th-w15" secondAttribute="width" id="W7V-Rx-s2S"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="ahm-Rv-Fo9"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" symbolic="YES" id="bLa-Ob-zFs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" id="gE6-a6-Dsh"/>
                             <constraint firstItem="eaZ-eX-GAT" firstAttribute="top" secondItem="2Jt-Xo-Rt8" secondAttribute="bottom" constant="8" symbolic="YES" id="gWp-zl-Q75"/>
+                            <constraint firstItem="nEd-QH-L34" firstAttribute="top" secondItem="eaZ-eX-GAT" secondAttribute="bottom" constant="8" id="h7f-h9-F9A"/>
                             <constraint firstAttribute="trailing" secondItem="RqQ-HF-qhN" secondAttribute="trailing" id="hfF-fK-sTr"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="top" secondItem="HXl-Ce-E0e" secondAttribute="bottom" id="hq9-hB-clQ"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="c6T-DM-Jb9" secondAttribute="width" id="jJo-BM-882"/>
@@ -109,6 +148,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="categoryChart" destination="z40-th-w15" id="xRV-wn-jk5"/>
+                        <outlet property="colourSegment" destination="nEd-QH-L34" id="XPV-X4-z2p"/>
                         <outlet property="employeeChart" destination="gcs-tl-TqT" id="i8O-70-H8s"/>
                         <outlet property="ordersGauge" destination="HXl-Ce-E0e" id="3gU-Cf-hor"/>
                         <outlet property="quarterSegment" destination="eaZ-eX-GAT" id="RDj-lo-tOF"/>

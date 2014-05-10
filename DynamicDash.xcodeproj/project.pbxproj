@@ -41,6 +41,7 @@
 		221F4AFB191D63D800390D6B /* SCAnimatingPieChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */; };
 		221F4AFF191D799E00390D6B /* SCDataPointAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AFE191D799E00390D6B /* SCDataPointAnimator.m */; };
 		221F4B02191DB57D00390D6B /* SCRangeHighlightChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B01191DB57D00390D6B /* SCRangeHighlightChart.m */; };
+		221F4B05191E659700390D6B /* SCGreenColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B04191E659700390D6B /* SCGreenColourTheme.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		221F4AFE191D799E00390D6B /* SCDataPointAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDataPointAnimator.m; sourceTree = "<group>"; };
 		221F4B00191DB57D00390D6B /* SCRangeHighlightChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRangeHighlightChart.h; sourceTree = "<group>"; };
 		221F4B01191DB57D00390D6B /* SCRangeHighlightChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRangeHighlightChart.m; sourceTree = "<group>"; };
+		221F4B03191E659700390D6B /* SCGreenColourTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGreenColourTheme.h; sourceTree = "<group>"; };
+		221F4B04191E659700390D6B /* SCGreenColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGreenColourTheme.m; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -280,6 +283,8 @@
 				221F4AE8191C100A00390D6B /* SCColourTheme.h */,
 				221F4AEB191C124100390D6B /* SCBlueColourTheme.h */,
 				221F4AEC191C124100390D6B /* SCBlueColourTheme.m */,
+				221F4B03191E659700390D6B /* SCGreenColourTheme.h */,
+				221F4B04191E659700390D6B /* SCGreenColourTheme.m */,
 				221F4AEF191C152700390D6B /* UIColor+IntegerColours.h */,
 				221F4AF0191C152700390D6B /* UIColor+IntegerColours.m */,
 				221F4AF2191C193B00390D6B /* SCColourableChartTheme.h */,
@@ -457,6 +462,7 @@
 			files = (
 				221F4AE6191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m in Sources */,
 				221F4B02191DB57D00390D6B /* SCRangeHighlightChart.m in Sources */,
+				221F4B05191E659700390D6B /* SCGreenColourTheme.m in Sources */,
 				221F4A951917CA9600390D6B /* SCAppDelegate.m in Sources */,
 				221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */,
 				221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */,

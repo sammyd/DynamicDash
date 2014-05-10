@@ -73,6 +73,8 @@
     self.xAxis.style.majorTickStyle.labelColor = theme.lightColour;
     self.yAxis.style.majorTickStyle.labelColor = theme.lightColour;
     self.highlight.backgroundColor = [theme.lightColour colorWithAlphaComponent:0.5];
+    
+    [self redrawChart];
 }
 
 - (void)moveHighlightToStart:(NSDate *)start end:(NSDate *)end

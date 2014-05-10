@@ -11,6 +11,7 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "SCMultiAxisCategoryDataSource.h"
 #import "SCBlueColourTheme.h"
+#import "SCGreenColourTheme.h"
 #import "SCColourableChartTheme.h"
 #import "SGauge+SpringAnimation.h"
 #import "SCAnimatingPieChartDatasource.h"
@@ -33,8 +34,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.northwind = [SCNorthwindData new];
     self.categoryDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.categoryChart categories:[self.northwind productCategories]];
+    self.categoryChart.title = @"Orders/Sales per Category";
     
     self.employeeDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.employeeChart categories:[self.northwind employeeNames]];
+    self.employeeChart.title = @"Orders/Sales per Employee";
     
     self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
     
@@ -110,8 +113,25 @@
 }
 
 - (IBAction)handleSegmentChanged:(id)sender {
-    [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
-          quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
+    if(sender == self.colourSegment) {
+        id<SCColourTheme> colourTheme;
+        switch (self.colourSegment.selectedSegmentIndex) {
+            case 0:
+                colourTheme = [SCBlueColourTheme new];
+                break;
+            case 1:
+                colourTheme = [SCGreenColourTheme new];
+                break;
+            default:
+                break;
+        }
+        if(colourTheme) {
+            [self setColourTheme:colourTheme];
+        }
+    } else {
+        [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
+              quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
+    }
 }
 
 - (void)styleGauge:(SGauge *)gauge withColourTheme:(id<SCColourTheme>)colourTheme background:(UIColor *)bgColour
