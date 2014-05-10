@@ -24,6 +24,7 @@
 - (NSNumber *)totalOrdersForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSNumber *)totalSalesForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)ordersPerShipperForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
+- (NSDictionary *)salesPerWeek;
 
 
 @end

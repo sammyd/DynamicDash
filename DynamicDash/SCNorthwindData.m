@@ -207,6 +207,26 @@
     
 }
 
+- (NSDictionary *)salesPerWeek
+{
+    NSString *queryString = @"SELECT strftime('%W', Orders.OrderDate) AS Week, "
+                             "strftime('%Y', Orders.OrderDate) AS Year, "
+                             "strftime('%Y-%W', Orders.OrderDate) AS YearWeek, "
+                             "Sum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS WeeklySales "
+                             "FROM [Order Details] "
+                             "JOIN Orders ON Orders.OrderID = [Order Details].OrderID "
+                             "GROUP BY YearWeek";
+    return [self executeQuery:queryString
+         withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
+             // Create a date from the week and year
+             NSDateComponents *cmpts = [NSDateComponents new];
+             [cmpts setWeek:[row[@"Week"] integerValue]];
+             [cmpts setYear:[row[@"Year"] integerValue]];
+             NSDate *weekDate = [[NSCalendar currentCalendar] dateFromComponents:cmpts];
+             [dict setObject:row[@"WeeklySales"] forKey:weekDate];
+         }];
+}
+
 
 #pragma mark - Non-API methods
 - (SLStatement *)executeQuery:(NSString *)query

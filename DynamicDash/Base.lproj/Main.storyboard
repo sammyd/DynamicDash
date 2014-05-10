@@ -17,16 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-tl-TqT" customClass="ShinobiChart">
-                                <rect key="frame" x="0.0" y="28" width="512" height="371"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="0.30933056327994846" blue="0.42992015482251567" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z40-th-w15" customClass="ShinobiChart">
-                                <rect key="frame" x="0.0" y="398.5" width="512" height="370"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.68210315537433064" green="1" blue="0.46133558775835282" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Jt-Xo-Rt8">
                                 <rect key="frame" x="520" y="28" width="134" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -52,20 +42,35 @@
                                     <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ur2-x9-n4j"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-tl-TqT" customClass="ShinobiChart">
+                                <rect key="frame" x="0.0" y="28" width="512" height="370"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="0.30933056327994846" blue="0.42992015482251567" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z40-th-w15" customClass="ShinobiChart">
+                                <rect key="frame" x="0.0" y="398" width="512" height="370"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.68210315537433064" green="1" blue="0.46133558775835282" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-Ce-E0e" customClass="SGaugeRadial">
-                                <rect key="frame" x="512" y="139" width="256" height="259"/>
+                                <rect key="frame" x="512" y="28" width="256" height="259"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.34635903587795402" green="0.16293370376413441" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
-                                <rect key="frame" x="768" y="139" width="256" height="259"/>
+                                <rect key="frame" x="768" y="27" width="256" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.42570171027816595" green="1" blue="0.83288257846354485" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
-                                <rect key="frame" x="512" y="397" width="256" height="258"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
+                                <rect key="frame" x="512" y="287" width="256" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.81655546494562947" green="0.1942063830382974" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-HF-qhN" customClass="SCRangeHighlightChart">
+                                <rect key="frame" x="512" y="547" width="512" height="221"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.66261010898712125" green="1" blue="0.9187821845158326" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -75,15 +80,18 @@
                             <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="gcs-tl-TqT" secondAttribute="trailing" constant="8" symbolic="YES" id="6zN-3p-kBw"/>
                             <constraint firstItem="eaZ-eX-GAT" firstAttribute="leading" secondItem="2Jt-Xo-Rt8" secondAttribute="trailing" constant="8" symbolic="YES" id="FD8-iF-KsF"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="height" secondItem="gcs-tl-TqT" secondAttribute="height" multiplier="0.7" id="L0b-BZ-NVm"/>
+                            <constraint firstItem="RqQ-HF-qhN" firstAttribute="leading" secondItem="z40-th-w15" secondAttribute="trailing" id="Mcr-zS-R95"/>
+                            <constraint firstItem="HXl-Ce-E0e" firstAttribute="top" secondItem="gcs-tl-TqT" secondAttribute="top" id="RIQ-nf-hT6"/>
                             <constraint firstItem="c6T-DM-Jb9" firstAttribute="leading" secondItem="HXl-Ce-E0e" secondAttribute="trailing" id="RKe-CY-HWF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RqQ-HF-qhN" secondAttribute="bottom" id="UUK-EK-n44"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UZh-EZ-VkT"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.25" id="W3c-4q-FmJ"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="z40-th-w15" secondAttribute="width" id="W7V-Rx-s2S"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="ahm-Rv-Fo9"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" symbolic="YES" id="bLa-Ob-zFs"/>
-                            <constraint firstItem="GsH-Tk-AkE" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="top" constant="-0.5" id="dQH-lh-fdI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" id="gE6-a6-Dsh"/>
-                            <constraint firstItem="HXl-Ce-E0e" firstAttribute="bottom" secondItem="gcs-tl-TqT" secondAttribute="bottom" id="gOf-IB-3DY"/>
+                            <constraint firstAttribute="trailing" secondItem="RqQ-HF-qhN" secondAttribute="trailing" id="hfF-fK-sTr"/>
+                            <constraint firstItem="GsH-Tk-AkE" firstAttribute="top" secondItem="HXl-Ce-E0e" secondAttribute="bottom" id="hq9-hB-clQ"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="c6T-DM-Jb9" secondAttribute="width" id="jJo-BM-882"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="centerX" secondItem="z40-th-w15" secondAttribute="centerX" id="mER-VK-CiA"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="bottom" secondItem="c6T-DM-Jb9" secondAttribute="bottom" id="nMB-rM-cMn"/>
@@ -91,6 +99,7 @@
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="height" secondItem="HXl-Ce-E0e" secondAttribute="height" id="oOp-8O-Uj0"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="leading" secondItem="z40-th-w15" secondAttribute="trailing" id="pr6-Md-tVQ"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="width" secondItem="HXl-Ce-E0e" secondAttribute="width" id="q9j-tu-dWa"/>
+                            <constraint firstItem="RqQ-HF-qhN" firstAttribute="top" secondItem="GsH-Tk-AkE" secondAttribute="bottom" id="sXe-f4-UiP"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="leading" secondItem="gcs-tl-TqT" secondAttribute="trailing" id="v5g-aY-bu0"/>
                             <constraint firstItem="z40-th-w15" firstAttribute="top" secondItem="gcs-tl-TqT" secondAttribute="bottom" id="xAC-Md-V0j"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="2Jt-Xo-Rt8" secondAttribute="top" id="xWz-pA-tHZ"/>
@@ -105,6 +114,7 @@
                         <outlet property="quarterSegment" destination="eaZ-eX-GAT" id="RDj-lo-tOF"/>
                         <outlet property="salesGauge" destination="c6T-DM-Jb9" id="qW8-JY-J6A"/>
                         <outlet property="shippersChart" destination="GsH-Tk-AkE" id="LEX-gZ-xCd"/>
+                        <outlet property="weeklySalesChart" destination="RqQ-HF-qhN" id="w8C-mW-yEp"/>
                         <outlet property="yearSegment" destination="2Jt-Xo-Rt8" id="W7Y-QV-QCK"/>
                     </connections>
                 </viewController>

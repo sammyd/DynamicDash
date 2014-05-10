@@ -40,6 +40,7 @@
 		221F4AF8191D1FDC00390D6B /* SGauge+SpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AF7191D1FDC00390D6B /* SGauge+SpringAnimation.m */; };
 		221F4AFB191D63D800390D6B /* SCAnimatingPieChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */; };
 		221F4AFF191D799E00390D6B /* SCDataPointAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4AFE191D799E00390D6B /* SCDataPointAnimator.m */; };
+		221F4B02191DB57D00390D6B /* SCRangeHighlightChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B01191DB57D00390D6B /* SCRangeHighlightChart.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,8 @@
 		221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimatingPieChartDatasource.m; sourceTree = "<group>"; };
 		221F4AFD191D799E00390D6B /* SCDataPointAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDataPointAnimator.h; sourceTree = "<group>"; };
 		221F4AFE191D799E00390D6B /* SCDataPointAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDataPointAnimator.m; sourceTree = "<group>"; };
+		221F4B00191DB57D00390D6B /* SCRangeHighlightChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRangeHighlightChart.h; sourceTree = "<group>"; };
+		221F4B01191DB57D00390D6B /* SCRangeHighlightChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRangeHighlightChart.m; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -254,6 +257,8 @@
 				221F4ADE191B10B100390D6B /* SCMultiAxisCategoryDataSource.m */,
 				221F4AF9191D63D800390D6B /* SCAnimatingPieChartDatasource.h */,
 				221F4AFA191D63D800390D6B /* SCAnimatingPieChartDatasource.m */,
+				221F4B00191DB57D00390D6B /* SCRangeHighlightChart.h */,
+				221F4B01191DB57D00390D6B /* SCRangeHighlightChart.m */,
 			);
 			name = "Specialist Charts";
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				221F4AE6191BDCCE00390D6B /* SCNoSpaceCategoryAxis.m in Sources */,
+				221F4B02191DB57D00390D6B /* SCRangeHighlightChart.m in Sources */,
 				221F4A951917CA9600390D6B /* SCAppDelegate.m in Sources */,
 				221F4ADF191B10B100390D6B /* SCMultiAxisCategoryDataSource.m in Sources */,
 				221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */,

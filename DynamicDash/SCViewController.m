@@ -44,7 +44,7 @@
     self.salesGauge.minimumValue = @0;
     self.salesGauge.maximumValue = @300000;
     
-    NSLog(@"%@", [self.northwind ordersPerShipperForYear:1997 quarter:1]);
+    [self.weeklySalesChart setData:[self.northwind salesPerWeek]];
     
     
     [self setYear:1997 quarter:1];

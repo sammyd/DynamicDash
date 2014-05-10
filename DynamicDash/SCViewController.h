@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ShinobiCharts/ShinobiChart.h>
 #import <ShinobiGauges/ShinobiGauges.h>
+#import "SCRangeHighlightChart.h"
 
 @interface SCViewController : UIViewController
 
@@ -21,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet SGaugeRadial *ordersGauge;
 @property (weak, nonatomic) IBOutlet SGaugeRadial *salesGauge;
 @property (weak, nonatomic) IBOutlet ShinobiChart *shippersChart;
+@property (weak, nonatomic) IBOutlet SCRangeHighlightChart *weeklySalesChart;
 @end
