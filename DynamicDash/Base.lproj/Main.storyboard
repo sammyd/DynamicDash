@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Jt-Xo-Rt8">
-                                <rect key="frame" x="520" y="28" width="134" height="29"/>
+                                <rect key="frame" x="768" y="287" width="134" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="1996"/>
@@ -30,7 +30,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eaZ-eX-GAT">
-                                <rect key="frame" x="662" y="28" width="131" height="29"/>
+                                <rect key="frame" x="768" y="323" width="131" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Q1"/>
@@ -76,13 +76,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="height" secondItem="z40-th-w15" secondAttribute="height" id="0hG-OH-wVU"/>
-                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="top" secondItem="eaZ-eX-GAT" secondAttribute="top" id="2LW-KI-BQZ"/>
-                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="gcs-tl-TqT" secondAttribute="trailing" constant="8" symbolic="YES" id="6zN-3p-kBw"/>
-                            <constraint firstItem="eaZ-eX-GAT" firstAttribute="leading" secondItem="2Jt-Xo-Rt8" secondAttribute="trailing" constant="8" symbolic="YES" id="FD8-iF-KsF"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="height" secondItem="gcs-tl-TqT" secondAttribute="height" multiplier="0.7" id="L0b-BZ-NVm"/>
                             <constraint firstItem="RqQ-HF-qhN" firstAttribute="leading" secondItem="z40-th-w15" secondAttribute="trailing" id="Mcr-zS-R95"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="top" secondItem="gcs-tl-TqT" secondAttribute="top" id="RIQ-nf-hT6"/>
                             <constraint firstItem="c6T-DM-Jb9" firstAttribute="leading" secondItem="HXl-Ce-E0e" secondAttribute="trailing" id="RKe-CY-HWF"/>
+                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="GsH-Tk-AkE" secondAttribute="trailing" id="TV9-Um-6hw"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RqQ-HF-qhN" secondAttribute="bottom" id="UUK-EK-n44"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UZh-EZ-VkT"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.25" id="W3c-4q-FmJ"/>
@@ -90,19 +88,21 @@
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="ahm-Rv-Fo9"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" symbolic="YES" id="bLa-Ob-zFs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" id="gE6-a6-Dsh"/>
+                            <constraint firstItem="eaZ-eX-GAT" firstAttribute="top" secondItem="2Jt-Xo-Rt8" secondAttribute="bottom" constant="8" symbolic="YES" id="gWp-zl-Q75"/>
                             <constraint firstAttribute="trailing" secondItem="RqQ-HF-qhN" secondAttribute="trailing" id="hfF-fK-sTr"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="top" secondItem="HXl-Ce-E0e" secondAttribute="bottom" id="hq9-hB-clQ"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="c6T-DM-Jb9" secondAttribute="width" id="jJo-BM-882"/>
+                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="eaZ-eX-GAT" secondAttribute="leading" id="kfn-ih-fZN"/>
                             <constraint firstItem="gcs-tl-TqT" firstAttribute="centerX" secondItem="z40-th-w15" secondAttribute="centerX" id="mER-VK-CiA"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="bottom" secondItem="c6T-DM-Jb9" secondAttribute="bottom" id="nMB-rM-cMn"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="height" secondItem="c6T-DM-Jb9" secondAttribute="height" id="nPY-8I-Hyq"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="height" secondItem="HXl-Ce-E0e" secondAttribute="height" id="oOp-8O-Uj0"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="leading" secondItem="z40-th-w15" secondAttribute="trailing" id="pr6-Md-tVQ"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="width" secondItem="HXl-Ce-E0e" secondAttribute="width" id="q9j-tu-dWa"/>
+                            <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="top" secondItem="GsH-Tk-AkE" secondAttribute="top" id="qii-Br-AQv"/>
                             <constraint firstItem="RqQ-HF-qhN" firstAttribute="top" secondItem="GsH-Tk-AkE" secondAttribute="bottom" id="sXe-f4-UiP"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="leading" secondItem="gcs-tl-TqT" secondAttribute="trailing" id="v5g-aY-bu0"/>
                             <constraint firstItem="z40-th-w15" firstAttribute="top" secondItem="gcs-tl-TqT" secondAttribute="bottom" id="xAC-Md-V0j"/>
-                            <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="2Jt-Xo-Rt8" secondAttribute="top" id="xWz-pA-tHZ"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>

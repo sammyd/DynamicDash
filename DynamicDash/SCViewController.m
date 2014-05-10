@@ -14,6 +14,7 @@
 #import "SCColourableChartTheme.h"
 #import "SGauge+SpringAnimation.h"
 #import "SCAnimatingPieChartDatasource.h"
+#import "NSDate+Quarterly.h"
 
 @interface SCViewController ()
 
@@ -83,6 +84,9 @@
     
     NSDictionary *shipperOrders = [self.northwind ordersPerShipperForYear:year quarter:quarter];
     [self.shippersDatasource animateToValuesInDictionary:shipperOrders];
+    
+    [self.weeklySalesChart moveHighlightToStart:[NSDate firstDayOfQuarter:quarter year:year]
+                                            end:[NSDate lastDayOfQuarter:quarter year:year]];
 }
 
 #pragma mark - Utility Methods

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSArray *datapoints;
 @property (nonatomic, strong) SChartLineSeries *lineSeries;
+@property (nonatomic, strong) SChartAnnotationZooming *highlight;
 
 @end
 
@@ -42,6 +43,7 @@
     self.datasource = self;
     self.xAxis = [SChartDateTimeAxis new];
     self.yAxis = [SChartNumberAxis new];
+    [self moveHighlightToStart:nil end:nil];
 }
 
 - (void)setData:(NSDictionary *)data
@@ -70,6 +72,19 @@
     self.yAxis.style.lineWidth = @2;
     self.xAxis.style.majorTickStyle.labelColor = theme.lightColour;
     self.yAxis.style.majorTickStyle.labelColor = theme.lightColour;
+    self.highlight.backgroundColor = [theme.lightColour colorWithAlphaComponent:0.5];
+}
+
+- (void)moveHighlightToStart:(NSDate *)start end:(NSDate *)end
+{
+    if(!self.highlight) {
+        self.highlight = [SChartAnnotation verticalBandAtPosition:start andMaxX:end withXAxis:self.xAxis andYAxis:self.yAxis withColor:[UIColor whiteColor]];
+        [self addAnnotation:self.highlight];
+    }
+    
+    self.highlight.xValue = start;
+    self.highlight.xValueMax = end;
+    [self redrawChart];
 }
 
 - (SChartLineSeries *)lineSeries
