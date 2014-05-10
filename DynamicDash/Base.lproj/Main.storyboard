@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="centerX" secondItem="9dp-k3-sCV" secondAttribute="centerX" id="xjG-iX-EeF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
                                 <rect key="frame" x="768" y="28" width="257" height="259"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -99,11 +99,12 @@
                                 <color key="backgroundColor" red="0.66261010898712125" green="1" blue="0.9187821845158326" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-QH-L34">
-                                <rect key="frame" x="768" y="359" width="103" height="29"/>
+                                <rect key="frame" x="768" y="359" width="155" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Blue"/>
                                     <segment title="Green"/>
+                                    <segment title="Red"/>
                                 </segments>
                                 <connections>
                                     <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uLP-q3-KMF"/>

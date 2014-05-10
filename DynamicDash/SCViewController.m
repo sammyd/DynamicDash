@@ -12,6 +12,7 @@
 #import "SCMultiAxisCategoryDataSource.h"
 #import "SCBlueColourTheme.h"
 #import "SCGreenColourTheme.h"
+#import "SCRedColourTheme.h"
 #import "SCColourableChartTheme.h"
 #import "SGauge+SpringAnimation.h"
 #import "SCAnimatingPieChartDatasource.h"
@@ -121,6 +122,9 @@
                 break;
             case 1:
                 colourTheme = [SCGreenColourTheme new];
+                break;
+            case 2:
+                colourTheme = [SCRedColourTheme new];
                 break;
             default:
                 break;
