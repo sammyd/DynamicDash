@@ -18,6 +18,7 @@
 #import "SGauge+ColourTheme.h"
 #import "SCAnimatingPieChartDatasource.h"
 #import "NSDate+Quarterly.h"
+#import "SCSIMultiplierGaugeLabelDelegate.h"
 
 @interface SCViewController ()
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *categoryDatasource;
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *employeeDatasource;
 @property (nonatomic, strong) SCAnimatingPieChartDatasource *shippersDatasource;
+@property (nonatomic, strong) SCSIMultiplierGaugeLabelDelegate *gaugeDelegate;
 
 @end
 
@@ -45,10 +47,13 @@
     
     [self setColourTheme:[SCBlueColourTheme new]];
     
+    self.gaugeDelegate = [SCSIMultiplierGaugeLabelDelegate new];
     self.ordersGauge.minimumValue = @0;
     self.ordersGauge.maximumValue = @450;
+    self.ordersGauge.delegate = self.gaugeDelegate;
     self.salesGauge.minimumValue = @0;
     self.salesGauge.maximumValue = @300000;
+    self.salesGauge.delegate = self.gaugeDelegate;
     
     [self.weeklySalesChart setData:[self.northwind salesPerWeek]];
     
