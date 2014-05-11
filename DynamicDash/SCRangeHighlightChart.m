@@ -69,6 +69,7 @@
     self.plotAreaBackgroundColor = [UIColor clearColor];
     self.canvasAreaBackgroundColor = [UIColor clearColor];
     self.lineSeries.style.lineColor = theme.lightColour;
+    self.lineSeries.style.lineWidth = @4;
     self.xAxis.style.lineColor = theme.midLightColour;
     self.xAxis.style.lineWidth = @2;
     self.xAxis.style.majorTickStyle.tickLabelOrientation = TickLabelOrientationHorizontal;
@@ -98,7 +99,6 @@
 {
     if (!_lineSeries) {
         _lineSeries = [SChartLineSeries new];
-        _lineSeries.style.lineWidth = @4;
     }
     return _lineSeries;
 }

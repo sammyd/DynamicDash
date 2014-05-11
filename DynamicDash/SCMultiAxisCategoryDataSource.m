@@ -72,10 +72,6 @@
 - (void)applyThemeColours:(NSArray *)themeColours
 {
     self.lineSeries.style.lineColor = themeColours[0];
-    self.lineSeries.style.lineWidth = @4;
-    self.columnSeries.style.areaColor = themeColours[2];
-    self.columnSeries.style.areaColorGradient = themeColours[2];
-    self.columnSeries.style.dataPointLabelStyle.textColor = themeColours[3];
     self.chart.backgroundColor = themeColours[1];
     
     SChartAxis *leftYAxis = self.yAxes[0];
@@ -83,6 +79,9 @@
     
     SChartAxis *rightYAxis = self.yAxes[1];
     rightYAxis.style.majorTickStyle.textAlignment = NSTextAlignmentLeft;
+    
+    [self.chart reloadData];
+    [self.chart redrawChart];
 }
 
 
@@ -158,8 +157,6 @@
     if(!_columnSeries) {
         _columnSeries = [SChartColumnSeries new];
         _columnSeries.baseline = @0;
-        _columnSeries.style.dataPointLabelStyle.showLabels = YES;
-        _columnSeries.style.dataPointLabelStyle.offsetFromDataPoint = CGPointMake(0, -10);
     }
     return _columnSeries;
 }

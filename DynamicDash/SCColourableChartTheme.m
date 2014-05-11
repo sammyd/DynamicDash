@@ -32,7 +32,17 @@
         self.xAxisStyle.majorTickStyle.tickLabelOrientation = TickLabelOrientationVertical;
         self.yAxisStyle.lineColor = theme.darkColour;
         self.yAxisStyle.majorTickStyle.labelColor = theme.lightColour;
-
+        
+        // Sort the series styles
+        SChartColumnSeriesStyle *style = [self columnSeriesStyleForSeriesAtIndex:0 selected:NO];
+        style.dataPointLabelStyle.showLabels = YES;
+        style.dataPointLabelStyle.textColor = theme.darkColour;
+        style.dataPointLabelStyle.offsetFromDataPoint = CGPointMake(0, -10);
+        style.areaColor = theme.midDarkColour;
+        style.areaColorGradient = theme.midDarkColour;
+        
+        SChartLineSeriesStyle *lineStyle = [self lineSeriesStyleForSeriesAtIndex:1 selected:NO];
+        lineStyle.lineWidth = @4;
     }
     return self;
 }
