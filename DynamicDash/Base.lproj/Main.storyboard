@@ -71,11 +71,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
-                                <rect key="frame" x="768" y="21" width="257" height="261"/>
+                                <rect key="frame" x="768" y="20" width="256" height="262"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sales in quarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adb-Ux-AKM">
-                                        <rect key="frame" x="70" y="220" width="118" height="21"/>
+                                        <rect key="frame" x="70" y="221" width="118" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -89,12 +89,12 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
-                                <rect key="frame" x="512" y="282" width="256" height="263"/>
+                                <rect key="frame" x="512" y="282" width="256" height="262"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.81655546494562947" green="0.1942063830382974" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-HF-qhN" customClass="SCRangeHighlightChart">
-                                <rect key="frame" x="512" y="545" width="512" height="223"/>
+                                <rect key="frame" x="512" y="544" width="512" height="224"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.66261010898712125" green="1" blue="0.9187821845158326" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -157,6 +157,8 @@
                         <outlet property="shippersChart" destination="GsH-Tk-AkE" id="LEX-gZ-xCd"/>
                         <outlet property="weeklySalesChart" destination="RqQ-HF-qhN" id="w8C-mW-yEp"/>
                         <outlet property="yearSegment" destination="2Jt-Xo-Rt8" id="W7Y-QV-QCK"/>
+                        <outletCollection property="titleLabels" destination="9dp-k3-sCV" id="tXZ-cP-vyG"/>
+                        <outletCollection property="titleLabels" destination="Adb-Ux-AKM" id="xhD-Yx-u5v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

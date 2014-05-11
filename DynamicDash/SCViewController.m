@@ -120,6 +120,11 @@
     self.salesGauge.backgroundColor = colourTheme.midLightColour;
     [self.ordersGauge applyColourTheme:colourTheme];
     self.ordersGauge.backgroundColor = colourTheme.lightColour;
+    
+    // And the title labels in the storyboard
+    [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+        label.textColor = colourTheme.darkColour;
+    }];
 }
 
 - (IBAction)handleSegmentChanged:(id)sender {

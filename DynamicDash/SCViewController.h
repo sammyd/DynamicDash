@@ -24,4 +24,7 @@
 @property (weak, nonatomic) IBOutlet SGaugeRadial *salesGauge;
 @property (weak, nonatomic) IBOutlet ShinobiChart *shippersChart;
 @property (weak, nonatomic) IBOutlet SCRangeHighlightChart *weeklySalesChart;
+
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titleLabels;
+
 @end
