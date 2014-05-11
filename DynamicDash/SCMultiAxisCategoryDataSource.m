@@ -69,13 +69,14 @@
     }];
 }
 
-- (void)applyTheme:(id<SCColourTheme>)theme
+- (void)applyThemeColours:(NSArray *)themeColours
 {
-    self.lineSeries.style.lineColor = theme.midLightColour;
+    self.lineSeries.style.lineColor = themeColours[0];
     self.lineSeries.style.lineWidth = @4;
-    self.columnSeries.style.areaColor = theme.midDarkColour;
-    self.columnSeries.style.areaColorGradient = theme.midDarkColour;
-    self.columnSeries.style.dataPointLabelStyle.textColor = theme.darkColour;
+    self.columnSeries.style.areaColor = themeColours[2];
+    self.columnSeries.style.areaColorGradient = themeColours[2];
+    self.columnSeries.style.dataPointLabelStyle.textColor = themeColours[3];
+    self.chart.backgroundColor = themeColours[1];
     
     SChartAxis *leftYAxis = self.yAxes[0];
     leftYAxis.style.majorTickStyle.showLabels = NO;

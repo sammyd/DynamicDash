@@ -23,6 +23,8 @@
         self.chartStyle.backgroundColor = [UIColor clearColor];
         self.chartStyle.plotAreaBackgroundColor = [UIColor clearColor];
         self.chartStyle.canvasBackgroundColor = [UIColor clearColor];
+        self.chartTitleStyle.textColor = theme.darkColour;
+        self.chartTitleStyle.font = [self.chartTitleStyle.font fontWithSize:18];
         
         // Axis settings
         self.xAxisStyle.lineColor = theme.darkColour;

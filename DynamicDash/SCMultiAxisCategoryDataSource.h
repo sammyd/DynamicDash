@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <ShinobiCharts/ShinobiChart.h>
-#import "SCColourTheme.h"
 
 @interface SCMultiAxisCategoryDataSource : NSObject
 
@@ -20,6 +19,6 @@
 
 - (void)animateToValues:(NSArray *)values;
 - (void)animateToValuesInDictionary:(NSDictionary *)dict;
-- (void)applyTheme:(id<SCColourTheme>)theme;
+- (void)applyThemeColours:(NSArray *)themeColours;
 
 @end
