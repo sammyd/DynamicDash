@@ -44,6 +44,7 @@
 		221F4B05191E659700390D6B /* SCGreenColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B04191E659700390D6B /* SCGreenColourTheme.m */; };
 		221F4B08191E6A4800390D6B /* SCRedColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B07191E6A4800390D6B /* SCRedColourTheme.m */; };
 		221F4B0B191FC25200390D6B /* SCAnnotationAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */; };
+		22AB55A6191FC84200BC2E94 /* SGauge+ColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55A5191FC84200BC2E94 /* SGauge+ColourTheme.m */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,8 @@
 		221F4B07191E6A4800390D6B /* SCRedColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRedColourTheme.m; sourceTree = "<group>"; };
 		221F4B09191FC25200390D6B /* SCAnnotationAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnnotationAnimator.h; sourceTree = "<group>"; };
 		221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnnotationAnimator.m; sourceTree = "<group>"; };
+		22AB55A4191FC84200BC2E94 /* SGauge+ColourTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SGauge+ColourTheme.h"; sourceTree = "<group>"; };
+		22AB55A5191FC84200BC2E94 /* SGauge+ColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SGauge+ColourTheme.m"; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -286,13 +289,8 @@
 		221F4AE7191C0FF800390D6B /* Colours */ = {
 			isa = PBXGroup;
 			children = (
+				221F4B0C191FC7B000390D6B /* Theme Instances */,
 				221F4AE8191C100A00390D6B /* SCColourTheme.h */,
-				221F4AEB191C124100390D6B /* SCBlueColourTheme.h */,
-				221F4AEC191C124100390D6B /* SCBlueColourTheme.m */,
-				221F4B03191E659700390D6B /* SCGreenColourTheme.h */,
-				221F4B04191E659700390D6B /* SCGreenColourTheme.m */,
-				221F4B06191E6A4800390D6B /* SCRedColourTheme.h */,
-				221F4B07191E6A4800390D6B /* SCRedColourTheme.m */,
 				221F4AEF191C152700390D6B /* UIColor+IntegerColours.h */,
 				221F4AF0191C152700390D6B /* UIColor+IntegerColours.m */,
 				221F4AF2191C193B00390D6B /* SCColourableChartTheme.h */,
@@ -306,6 +304,8 @@
 			children = (
 				221F4AF6191D1FDC00390D6B /* SGauge+SpringAnimation.h */,
 				221F4AF7191D1FDC00390D6B /* SGauge+SpringAnimation.m */,
+				22AB55A4191FC84200BC2E94 /* SGauge+ColourTheme.h */,
+				22AB55A5191FC84200BC2E94 /* SGauge+ColourTheme.m */,
 			);
 			name = "Gauge Enhancements";
 			sourceTree = "<group>";
@@ -319,6 +319,19 @@
 				221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */,
 			);
 			name = Animator;
+			sourceTree = "<group>";
+		};
+		221F4B0C191FC7B000390D6B /* Theme Instances */ = {
+			isa = PBXGroup;
+			children = (
+				221F4AEB191C124100390D6B /* SCBlueColourTheme.h */,
+				221F4AEC191C124100390D6B /* SCBlueColourTheme.m */,
+				221F4B03191E659700390D6B /* SCGreenColourTheme.h */,
+				221F4B04191E659700390D6B /* SCGreenColourTheme.m */,
+				221F4B06191E6A4800390D6B /* SCRedColourTheme.h */,
+				221F4B07191E6A4800390D6B /* SCRedColourTheme.m */,
+			);
+			name = "Theme Instances";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,6 +492,7 @@
 				221F4ACC1919292B00390D6B /* SCNorthwindData.m in Sources */,
 				221F4A9B1917CA9600390D6B /* SCViewController.m in Sources */,
 				221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */,
+				22AB55A6191FC84200BC2E94 /* SGauge+ColourTheme.m in Sources */,
 				221F4AF4191C193B00390D6B /* SCColourableChartTheme.m in Sources */,
 				221F4AFF191D799E00390D6B /* SCDataPointAnimator.m in Sources */,
 				221F4AF8191D1FDC00390D6B /* SGauge+SpringAnimation.m in Sources */,

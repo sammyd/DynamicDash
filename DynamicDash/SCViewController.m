@@ -15,6 +15,7 @@
 #import "SCRedColourTheme.h"
 #import "SCColourableChartTheme.h"
 #import "SGauge+SpringAnimation.h"
+#import "SGauge+ColourTheme.h"
 #import "SCAnimatingPieChartDatasource.h"
 #import "NSDate+Quarterly.h"
 
@@ -110,9 +111,10 @@
     [self.weeklySalesChart applyColourTheme:colourTheme];
     
     // Apply theme to the gauge
-    [self styleGauge:self.salesGauge withColourTheme:colourTheme background:colourTheme.midLightColour];
-    [self styleGauge:self.ordersGauge withColourTheme:colourTheme background:colourTheme.lightColour];
-    
+    [self.salesGauge applyColourTheme:colourTheme];
+    self.salesGauge.backgroundColor = colourTheme.midLightColour;
+    [self.ordersGauge applyColourTheme:colourTheme];
+    self.ordersGauge.backgroundColor = colourTheme.lightColour;
 }
 
 - (IBAction)handleSegmentChanged:(id)sender {
@@ -138,25 +140,5 @@
         [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
               quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
     }
-}
-
-- (void)styleGauge:(SGauge *)gauge withColourTheme:(id<SCColourTheme>)colourTheme background:(UIColor *)bgColour
-{
-    gauge.style.bevelWidth = 5;
-    gauge.style.showGlassEffect = NO;
-    gauge.style.bevelPrimaryColor = [UIColor clearColor];
-    gauge.style.bevelSecondaryColor = [UIColor clearColor];
-    gauge.style.innerBackgroundColor = [UIColor clearColor];
-    gauge.style.outerBackgroundColor = [UIColor clearColor];
-    gauge.style.needleBorderWidth = 0;
-    gauge.style.needleColor = colourTheme.midDarkColour;
-    gauge.style.tickLabelColor = colourTheme.darkColour;
-    gauge.style.tickBaselineColor = colourTheme.darkColour;
-    gauge.style.majorTickColor = colourTheme.darkColour;
-    gauge.style.knobColor = colourTheme.darkColour;
-    gauge.style.knobBorderWidth = 0;
-    gauge.style.knobRadius = 10;
-    gauge.style.needleWidth = 12;
-    gauge.backgroundColor = bgColour;
 }
 @end
