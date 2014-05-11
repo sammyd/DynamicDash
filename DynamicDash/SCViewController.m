@@ -10,9 +10,7 @@
 #import "SCNorthwindData.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "SCMultiAxisCategoryDataSource.h"
-#import "SCBlueColourTheme.h"
-#import "SCGreenColourTheme.h"
-#import "SCRedColourTheme.h"
+#import "SCColourThemeManager.h"
 #import "SCColourableChartTheme.h"
 #import "SGauge+SpringAnimation.h"
 #import "SGauge+ColourTheme.h"
@@ -27,6 +25,7 @@
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *employeeDatasource;
 @property (nonatomic, strong) SCAnimatingPieChartDatasource *shippersDatasource;
 @property (nonatomic, strong) SCSIMultiplierGaugeLabelDelegate *gaugeDelegate;
+@property (nonatomic, strong) SCColourThemeManager *colourThemeManager;
 
 @end
 
@@ -45,7 +44,9 @@
     
     self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
     
-    [self setColourTheme:[SCBlueColourTheme new]];
+    self.colourThemeManager = [SCColourThemeManager new];
+    
+    [self setColourThemeWithName:@"blue"];
     
     self.gaugeDelegate = [SCSIMultiplierGaugeLabelDelegate new];
     self.ordersGauge.minimumValue = @0;
@@ -103,9 +104,18 @@
 }
 
 #pragma mark - Utility Methods
+- (void)setColourThemeWithName:(NSString *)themeName
+{
+    id<SCColourTheme> colourTheme = [self.colourThemeManager colourThemeWithName:[themeName lowercaseString]];
+    if(colourTheme) {
+        [self setColourTheme:colourTheme];
+    }
+}
+
 - (void)setColourTheme:(id<SCColourTheme>)colourTheme
 {
     self.view.backgroundColor = colourTheme.darkColour;
+    self.view.tintColor = colourTheme.lightColour;
     [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.categoryDatasource applyThemeColours:@[colourTheme.midColour, colourTheme.midLightColour,
                                                  colourTheme.midDarkColour, colourTheme.darkColour]];
@@ -131,23 +141,8 @@
 
 - (IBAction)handleSegmentChanged:(id)sender {
     if(sender == self.colourSegment) {
-        id<SCColourTheme> colourTheme;
-        switch (self.colourSegment.selectedSegmentIndex) {
-            case 0:
-                colourTheme = [SCBlueColourTheme new];
-                break;
-            case 1:
-                colourTheme = [SCGreenColourTheme new];
-                break;
-            case 2:
-                colourTheme = [SCRedColourTheme new];
-                break;
-            default:
-                break;
-        }
-        if(colourTheme) {
-            [self setColourTheme:colourTheme];
-        }
+        NSString *themeName = [self.colourSegment titleForSegmentAtIndex:self.colourSegment.selectedSegmentIndex];
+        [self setColourThemeWithName:themeName];
     } else {
         [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
               quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
