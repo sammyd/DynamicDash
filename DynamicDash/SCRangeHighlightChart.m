@@ -7,12 +7,15 @@
 //
 
 #import "SCRangeHighlightChart.h"
+#import <POP/POP.h>
 
 @interface SCRangeHighlightChart () <SChartDatasource>
 
 @property (nonatomic, strong) NSArray *datapoints;
 @property (nonatomic, strong) SChartLineSeries *lineSeries;
 @property (nonatomic, strong) SChartAnnotationZooming *highlight;
+@property (nonatomic, strong) POPAnimatableProperty *animateableAnnotationMinX;
+@property (nonatomic, strong) POPAnimatableProperty *animateableAnnotationMaxX;
 
 @end
 
@@ -44,6 +47,34 @@
     self.xAxis = [SChartDateTimeAxis new];
     self.yAxis = [SChartNumberAxis new];
     [self moveHighlightToStart:nil end:nil];
+    
+    self.animateableAnnotationMinX = [POPAnimatableProperty propertyWithName:@"com.shinobicharts.annotation.minx" initializer:^(POPMutableAnimatableProperty *prop) {
+        // read value
+        prop.readBlock = ^(SChartAnnotationZooming *annotation, CGFloat values[]) {
+            values[0] = [annotation.xValue timeIntervalSince1970];
+        };
+        // write value
+        prop.writeBlock = ^(SChartAnnotationZooming *annotation, const CGFloat values[]) {
+            annotation.xValue = [NSDate dateWithTimeIntervalSince1970:values[0]];
+            [self redrawChart];
+        };
+        // dynamics threshold
+        prop.threshold = 0.01;
+    }];
+    
+    self.animateableAnnotationMaxX = [POPAnimatableProperty propertyWithName:@"com.shinobicharts.annotation.maxx" initializer:^(POPMutableAnimatableProperty *prop) {
+        // read value
+        prop.readBlock = ^(SChartAnnotationZooming *annotation, CGFloat values[]) {
+            values[0] = [annotation.xValueMax timeIntervalSince1970];
+        };
+        // write value
+        prop.writeBlock = ^(SChartAnnotationZooming *annotation, const CGFloat values[]) {
+            annotation.xValueMax = [NSDate dateWithTimeIntervalSince1970:values[0]];
+            [self redrawChart];
+        };
+        // dynamics threshold
+        prop.threshold = 0.01;
+    }];
 }
 
 - (void)setData:(NSDictionary *)data
@@ -83,10 +114,19 @@
         self.highlight = [SChartAnnotation verticalBandAtPosition:start andMaxX:end withXAxis:self.xAxis andYAxis:self.yAxis withColor:[UIColor whiteColor]];
         [self addAnnotation:self.highlight];
     }
+    POPSpringAnimation *minAnim = [POPSpringAnimation animation];
+    minAnim.property = self.animateableAnnotationMinX;
+    minAnim.toValue = @([start timeIntervalSince1970]);
+    minAnim.springBounciness = 4.0;
+    minAnim.springSpeed = 4.0;
+    [self.highlight pop_addAnimation:minAnim forKey:@"MinValueAnimation"];
     
-    self.highlight.xValue = start;
-    self.highlight.xValueMax = end;
-    [self redrawChart];
+    POPSpringAnimation *maxAnim = [POPSpringAnimation animation];
+    maxAnim.property = self.animateableAnnotationMaxX;
+    maxAnim.toValue = @([end timeIntervalSince1970]);
+    maxAnim.springBounciness = 4.0;
+    maxAnim.springSpeed = 4.0;
+    [self.highlight pop_addAnimation:maxAnim forKey:@"MaxValueAnimation"];
 }
 
 - (SChartLineSeries *)lineSeries
