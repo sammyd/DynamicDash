@@ -28,7 +28,9 @@
         self.categories = categories;
         self.chart = chart;
         self.chart.datasource = self;
-        self.chart.delegate = self;
+        self.chart.legend.hidden = NO;
+        self.chart.legend.placement = SChartLegendPlacementInsidePlotArea;
+        self.chart.legend.position = SChartLegendPositionBottomMiddle;
         [self prepareDatapoints];
         
         self.dpAnimator = [[SCDataPointAnimator alloc] initWithPostWriteCallback:^{
@@ -66,9 +68,14 @@
 
 - (void)applyTheme:(id<SCColourTheme>)theme
 {
-    self.series.style.flavourColors = [NSMutableArray arrayWithArray:@[theme.midColour, theme.midLightColour, theme.lightColour]];
+    self.series.style.flavourColors = [NSMutableArray arrayWithArray:@[[theme.midColour colorWithAlphaComponent:0.5], theme.midLightColour, theme.lightColour]];
+
+    self.chart.legend.style.fontColor = theme.darkColour;
+    self.chart.legend.style.borderColor = theme.darkColour;
+    self.chart.legend.style.borderWidth = @2;
+    self.chart.legend.style.areaColor = [theme.midColour colorWithAlphaComponent:0.4];
+    self.chart.legend.style.font = [self.chart.legend.style.font fontWithSize:10];
     self.series.style.labelFontColor = theme.darkColour;
-    self.series.style.showLabels = YES;
     self.chart.backgroundColor = theme.midDarkColour;
 }
 
@@ -76,6 +83,8 @@
 {
     if(!_series) {
         _series = [SChartPieSeries new];
+        _series.style.showLabels = NO;
+        _series.selectedStyle.showLabels = NO;
     }
     return _series;
 }
@@ -99,13 +108,6 @@
 - (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
 {
     return self.datapoints[dataIndex];
-}
-
-#pragma mark - SChartDelegate methods
-- (void)sChart:(ShinobiChart *)chart alterLabel:(UILabel *)label forDatapoint:(SChartRadialDataPoint *)datapoint atSliceIndex:(NSInteger)index inRadialSeries:(SChartRadialSeries *)series
-{
-    label.text = datapoint.name;
-    [label sizeToFit];
 }
 
 @end
