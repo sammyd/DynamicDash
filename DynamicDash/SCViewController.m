@@ -89,8 +89,10 @@
     NSDictionary *shipperOrders = [self.northwind ordersPerShipperForYear:year quarter:quarter];
     [self.shippersDatasource animateToValuesInDictionary:shipperOrders];
     
-    [self.weeklySalesChart moveHighlightToStart:[NSDate firstDayOfQuarter:quarter year:year]
-                                            end:[NSDate lastDayOfQuarter:quarter year:year]];
+    
+    SChartDateRange *quarterDateRange = [[SChartDateRange alloc] initWithDateMinimum:[NSDate firstDayOfQuarter:quarter year:year]
+                                                                      andDateMaximum:[NSDate lastDayOfQuarter:quarter year:year]];
+    [self.weeklySalesChart moveHighlightToDateRange:quarterDateRange];
 }
 
 #pragma mark - Utility Methods

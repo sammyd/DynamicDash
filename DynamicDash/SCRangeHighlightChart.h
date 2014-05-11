@@ -13,6 +13,6 @@
 
 - (void)setData:(NSDictionary *)data;
 - (void)applyColourTheme:(id<SCColourTheme>)theme;
-- (void)moveHighlightToStart:(NSDate *)start end:(NSDate *)end;
+- (void)moveHighlightToDateRange:(SChartDateRange *)range;
 
 @end
