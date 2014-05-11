@@ -99,7 +99,7 @@
 #pragma mark - Utility Methods
 - (void)setColourTheme:(id<SCColourTheme>)colourTheme
 {
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = colourTheme.darkColour;
     [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.categoryDatasource applyTheme:colourTheme];
     self.categoryChart.backgroundColor = colourTheme.midLightColour;
@@ -140,5 +140,10 @@
         [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
               quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
     }
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 @end
