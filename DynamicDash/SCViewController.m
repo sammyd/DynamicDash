@@ -106,10 +106,10 @@
 {
     self.view.backgroundColor = colourTheme.darkColour;
     [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
-    [self.categoryDatasource applyThemeColours:@[colourTheme.midLightColour, colourTheme.midColour,
+    [self.categoryDatasource applyThemeColours:@[colourTheme.midColour, colourTheme.midLightColour,
                                                  colourTheme.midDarkColour, colourTheme.darkColour]];
     [self.employeeChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
-    [self.employeeDatasource applyThemeColours:@[colourTheme.midColour, colourTheme.midLightColour,
+    [self.employeeDatasource applyThemeColours:@[colourTheme.midLightColour, colourTheme.midColour,
                                                  colourTheme.midDarkColour, colourTheme.darkColour]];
     [self.shippersChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.shippersDatasource applyTheme:colourTheme];
