@@ -71,6 +71,7 @@
     self.lineSeries.style.lineColor = theme.lightColour;
     self.xAxis.style.lineColor = theme.midLightColour;
     self.xAxis.style.lineWidth = @2;
+    self.xAxis.style.majorTickStyle.tickLabelOrientation = TickLabelOrientationHorizontal;
     self.yAxis.style.lineColor = theme.midLightColour;
     self.yAxis.style.lineWidth = @2;
     self.xAxis.style.majorTickStyle.labelColor = theme.lightColour;

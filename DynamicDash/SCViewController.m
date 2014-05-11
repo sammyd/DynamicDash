@@ -56,6 +56,7 @@
     self.salesGauge.delegate = self.gaugeDelegate;
     
     [self.weeklySalesChart setData:[self.northwind salesPerWeek]];
+    self.weeklySalesChart.title = @"Weekly Sales Totals";
     
     
     [self setYear:1997 quarter:1];
@@ -113,6 +114,7 @@
                                                  colourTheme.midDarkColour, colourTheme.darkColour]];
     [self.shippersChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.shippersDatasource applyTheme:colourTheme];
+    [self.weeklySalesChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.weeklySalesChart applyColourTheme:colourTheme];
     
     // Apply theme to the gauge
