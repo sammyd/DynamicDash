@@ -44,6 +44,10 @@
 		221F4B05191E659700390D6B /* SCGreenColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B04191E659700390D6B /* SCGreenColourTheme.m */; };
 		221F4B08191E6A4800390D6B /* SCRedColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B07191E6A4800390D6B /* SCRedColourTheme.m */; };
 		221F4B0B191FC25200390D6B /* SCAnnotationAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */; };
+		22635889193A52750055CBE5 /* MomentumAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635881193A52750055CBE5 /* MomentumAnimation.m */; };
+		2263588A193A52750055CBE5 /* ShinobiRangeAnnotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635884193A52750055CBE5 /* ShinobiRangeAnnotationManager.m */; };
+		2263588B193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635886193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m */; };
+		2263588C193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635888193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m */; };
 		22AB55A6191FC84200BC2E94 /* SGauge+ColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55A5191FC84200BC2E94 /* SGauge+ColourTheme.m */; };
 		22AB55A9191FE3E800BC2E94 /* SCSIMultiplierGaugeLabelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55A8191FE3E800BC2E94 /* SCSIMultiplierGaugeLabelDelegate.m */; };
 		22AB55AC191FEA4D00BC2E94 /* SCYellowColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55AB191FEA4D00BC2E94 /* SCYellowColourTheme.m */; };
@@ -122,6 +126,15 @@
 		221F4B07191E6A4800390D6B /* SCRedColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRedColourTheme.m; sourceTree = "<group>"; };
 		221F4B09191FC25200390D6B /* SCAnnotationAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnnotationAnimator.h; sourceTree = "<group>"; };
 		221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnnotationAnimator.m; sourceTree = "<group>"; };
+		22635880193A52750055CBE5 /* MomentumAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentumAnimation.h; sourceTree = "<group>"; };
+		22635881193A52750055CBE5 /* MomentumAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentumAnimation.m; sourceTree = "<group>"; };
+		22635882193A52750055CBE5 /* ShinobiRangeAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiRangeAnnotationDelegate.h; sourceTree = "<group>"; };
+		22635883193A52750055CBE5 /* ShinobiRangeAnnotationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiRangeAnnotationManager.h; sourceTree = "<group>"; };
+		22635884193A52750055CBE5 /* ShinobiRangeAnnotationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiRangeAnnotationManager.m; sourceTree = "<group>"; };
+		22635885193A52750055CBE5 /* ShinobiRangeHandleAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiRangeHandleAnnotation.h; sourceTree = "<group>"; };
+		22635886193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiRangeHandleAnnotation.m; sourceTree = "<group>"; };
+		22635887193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiRangeSelectionAnnotation.h; sourceTree = "<group>"; };
+		22635888193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiRangeSelectionAnnotation.m; sourceTree = "<group>"; };
 		22AB55A4191FC84200BC2E94 /* SGauge+ColourTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SGauge+ColourTheme.h"; sourceTree = "<group>"; };
 		22AB55A5191FC84200BC2E94 /* SGauge+ColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SGauge+ColourTheme.m"; sourceTree = "<group>"; };
 		22AB55A7191FE3E800BC2E94 /* SCSIMultiplierGaugeLabelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSIMultiplierGaugeLabelDelegate.h; sourceTree = "<group>"; };
@@ -217,6 +230,7 @@
 		221F4A8A1917CA9600390D6B /* DynamicDash */ = {
 			isa = PBXGroup;
 			children = (
+				2263587F193A52240055CBE5 /* Range Annotation */,
 				221F4AFC191D798C00390D6B /* Animator */,
 				221F4AF5191D1FC100390D6B /* Gauge Enhancements */,
 				221F4AE7191C0FF800390D6B /* Colours */,
@@ -352,6 +366,22 @@
 				22AB55AE191FEABE00BC2E94 /* SCPinkColourTheme.m */,
 			);
 			name = "Theme Instances";
+			sourceTree = "<group>";
+		};
+		2263587F193A52240055CBE5 /* Range Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				22635880193A52750055CBE5 /* MomentumAnimation.h */,
+				22635881193A52750055CBE5 /* MomentumAnimation.m */,
+				22635882193A52750055CBE5 /* ShinobiRangeAnnotationDelegate.h */,
+				22635883193A52750055CBE5 /* ShinobiRangeAnnotationManager.h */,
+				22635884193A52750055CBE5 /* ShinobiRangeAnnotationManager.m */,
+				22635885193A52750055CBE5 /* ShinobiRangeHandleAnnotation.h */,
+				22635886193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m */,
+				22635887193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.h */,
+				22635888193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m */,
+			);
+			name = "Range Annotation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,12 +543,16 @@
 				221F4A9B1917CA9600390D6B /* SCViewController.m in Sources */,
 				221F4AE3191B288300390D6B /* NSDate+Quarterly.m in Sources */,
 				22AB55A6191FC84200BC2E94 /* SGauge+ColourTheme.m in Sources */,
+				22635889193A52750055CBE5 /* MomentumAnimation.m in Sources */,
 				221F4AF4191C193B00390D6B /* SCColourableChartTheme.m in Sources */,
 				221F4AFF191D799E00390D6B /* SCDataPointAnimator.m in Sources */,
+				2263588B193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m in Sources */,
+				2263588C193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m in Sources */,
 				221F4AF8191D1FDC00390D6B /* SGauge+SpringAnimation.m in Sources */,
 				22AB55AC191FEA4D00BC2E94 /* SCYellowColourTheme.m in Sources */,
 				221F4B0B191FC25200390D6B /* SCAnnotationAnimator.m in Sources */,
 				22AB55B2191FEB4100BC2E94 /* SCColourThemeManager.m in Sources */,
+				2263588A193A52750055CBE5 /* ShinobiRangeAnnotationManager.m in Sources */,
 				221F4AF1191C152700390D6B /* UIColor+IntegerColours.m in Sources */,
 				22AB55A9191FE3E800BC2E94 /* SCSIMultiplierGaugeLabelDelegate.m in Sources */,
 				221F4A911917CA9600390D6B /* main.m in Sources */,

@@ -8,13 +8,15 @@
 
 #import "SCRangeHighlightChart.h"
 #import "SCAnnotationAnimator.h"
+#import "ShinobiRangeAnnotationManager.h"
 
 @interface SCRangeHighlightChart () <SChartDatasource>
 
 @property (nonatomic, strong) NSArray *datapoints;
 @property (nonatomic, strong) SChartLineSeries *lineSeries;
-@property (nonatomic, strong) SChartAnnotationZooming *highlight;
-@property (nonatomic, strong) SCAnnotationAnimator *animator;
+//@property (nonatomic, strong) SChartAnnotationZooming *highlight;
+//@property (nonatomic, strong) SCAnnotationAnimator *animator;
+@property (nonatomic, strong) ShinobiRangeAnnotationManager *rangeAnnotationManager;
 
 @end
 
@@ -45,7 +47,8 @@
     self.datasource = self;
     self.xAxis = [SChartDateTimeAxis new];
     self.yAxis = [SChartNumberAxis new];
-    self.animator = [SCAnnotationAnimator new];
+    //self.animator = [SCAnnotationAnimator new];
+    self.rangeAnnotationManager = [[ShinobiRangeAnnotationManager alloc] initWithChart:self minimumSpan:7*24*3600];
     [self moveHighlightToDateRange:nil];
 }
 
@@ -77,22 +80,14 @@
     self.yAxis.style.lineWidth = @2;
     self.xAxis.style.majorTickStyle.labelColor = theme.lightColour;
     self.yAxis.style.majorTickStyle.labelColor = theme.lightColour;
-    self.highlight.backgroundColor = [theme.lightColour colorWithAlphaComponent:0.5];
+    //self.highlight.backgroundColor = [theme.lightColour colorWithAlphaComponent:0.5];
     
     [self redrawChart];
 }
 
 - (void)moveHighlightToDateRange:(SChartDateRange *)range
 {
-    if(!self.highlight) {
-        self.highlight = [SChartAnnotation verticalBandAtPosition:[range minimumAsDate]
-                                                          andMaxX:[range maximumAsDate]
-                                                        withXAxis:self.xAxis
-                                                         andYAxis:self.yAxis
-                                                        withColor:[UIColor whiteColor]];
-        [self addAnnotation:self.highlight];
-    }
-    [self.animator animateVerticalBandAnnotation:self.highlight toDateRange:range];
+    [self.rangeAnnotationManager moveRangeSelectorToRange:range];
 }
 
 - (SChartLineSeries *)lineSeries
