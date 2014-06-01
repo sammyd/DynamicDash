@@ -95,7 +95,7 @@
     return _ymdDF;
 }
 
-- (NSDictionary *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)salesPerCategoryFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
     NSString *queryString = [NSString stringWithFormat:
         @"SELECT Categories.CategoryName, "
@@ -106,8 +106,8 @@
         "JOIN  [Orders] on Orders.OrderID = [Order Details].OrderID "
         "WHERE Orders.ShippedDate Between DATETIME('%@') And DATETIME('%@')"
         "GROUP BY Categories.CategoryName",
-                     [self.ymdDF stringFromDate:[NSDate firstDayOfQuarter:quarter year:year]],
-                     [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
+                     [self.ymdDF stringFromDate:fromDate],
+                     [self.ymdDF stringFromDate:toDate]];
     
     return [self executeQuery:queryString
          withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
@@ -115,7 +115,13 @@
          }];
 }
 
-- (NSDictionary *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    return [self salesPerCategoryFromDate:[NSDate firstDayOfQuarter:quarter year:year]
+                                   toDate:[NSDate lastDayOfQuarter:quarter year:year]];
+}
+
+- (NSDictionary *)salesPerEmployeeFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
     NSString *queryString = [NSString stringWithFormat:
          @"SELECT Employees.FirstName, Employees.LastName, "
@@ -125,8 +131,8 @@
          "JOIN   [Order Details] on Orders.OrderID = [Order Details].OrderID "
          "WHERE Orders.ShippedDate Between DATETIME('%@') And DATETIME('%@')"
          "GROUP BY Employees.EmployeeID",
-                     [self.ymdDF stringFromDate:[NSDate firstDayOfQuarter:quarter year:year]],
-                     [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
+                     [self.ymdDF stringFromDate:fromDate],
+                     [self.ymdDF stringFromDate:toDate]];
     
     return [self executeQuery:queryString
          withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
@@ -135,7 +141,13 @@
          }];
 }
 
-- (NSDictionary *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    return [self salesPerEmployeeFromDate:[NSDate firstDayOfQuarter:quarter year:year]
+                                   toDate:[NSDate lastDayOfQuarter:quarter year:year]];
+}
+
+- (NSDictionary *)ordersPerCategoryFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
     NSString *queryString = [NSString stringWithFormat:
          @"SELECT Categories.CategoryName, "
@@ -146,8 +158,8 @@
          "JOIN  [Orders] on Orders.OrderID = [Order Details].OrderID "
          "WHERE Orders.ShippedDate Between DATETIME('%@') And DATETIME('%@')"
          "GROUP BY Categories.CategoryName",
-                     [self.ymdDF stringFromDate:[NSDate firstDayOfQuarter:quarter year:year]],
-                     [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
+                     [self.ymdDF stringFromDate:fromDate],
+                     [self.ymdDF stringFromDate:toDate]];
     
     return [self executeQuery:queryString
          withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
@@ -156,7 +168,13 @@
 
 }
 
-- (NSDictionary *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+- (NSDictionary *)ordersPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    return [self ordersPerCategoryFromDate:[NSDate firstDayOfQuarter:quarter year:year]
+                                    toDate:[NSDate lastDayOfQuarter:quarter year:year]];
+}
+
+- (NSDictionary *)ordersPerEmployeeFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
     NSString *queryString = [NSString stringWithFormat:
          @"SELECT Employees.FirstName, Employees.LastName, "
@@ -165,14 +183,20 @@
          "JOIN    Orders On Orders.EmployeeID = Employees.EmployeeID "
          "WHERE Orders.ShippedDate Between DATETIME('%@') And DATETIME('%@')"
          "GROUP BY Employees.EmployeeID",
-                     [self.ymdDF stringFromDate:[NSDate firstDayOfQuarter:quarter year:year]],
-                     [self.ymdDF stringFromDate:[NSDate lastDayOfQuarter:quarter year:year]]];
+                     [self.ymdDF stringFromDate:fromDate],
+                     [self.ymdDF stringFromDate:toDate]];
     
     return [self executeQuery:queryString
          withResultDictionary:^(NSMutableDictionary *dict, NSDictionary *row) {
              NSString *employeeName = [NSString stringWithFormat:@"%@ %@", row[@"FirstName"], row[@"LastName"]];
              [dict setValue:row[@"EmployeeOrders"] forKey:employeeName];
          }];
+}
+
+- (NSDictionary *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter
+{
+    return [self ordersPerEmployeeFromDate:[NSDate firstDayOfQuarter:quarter year:year]
+                                    toDate:[NSDate lastDayOfQuarter:quarter year:year]];
 }
 
 - (NSNumber *)totalOrdersForYear:(NSUInteger)year quarter:(NSUInteger)quarter

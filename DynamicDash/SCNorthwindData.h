@@ -12,11 +12,12 @@
 
 - (NSArray *)invoiceData;
 
-
+#pragma mark - Categorical data
 - (NSArray *)productCategories;
 - (NSArray *)employeeNames;
 - (NSArray *)shippers;
 
+#pragma mark - Summary Data
 - (NSDictionary *)salesPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)salesPerCategoryForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)ordersPerEmployeeForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
@@ -25,6 +26,12 @@
 - (NSNumber *)totalSalesForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)ordersPerShipperForYear:(NSUInteger)year quarter:(NSUInteger)quarter;
 - (NSDictionary *)salesPerWeek;
+
+#pragma mark - Time-based data queries
+- (NSDictionary *)salesPerEmployeeFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+- (NSDictionary *)salesPerCategoryFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+- (NSDictionary *)ordersPerEmployeeFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+- (NSDictionary *)ordersPerCategoryFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 
 
 @end
