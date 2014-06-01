@@ -134,7 +134,7 @@
                                            duration:1.f
                                         updateBlock:^(CGFloat position) {
             // This is the code which will get called to update the position
-            CGFloat centrePixelLocation = position * chart.canvas.bounds.size.width;
+            CGFloat centrePixelLocation = position * self->chart.canvas.bounds.size.width;
             
             // Create the range
             SChartRange *updatedRange = [self rangeCentredOnPixelValue:centrePixelLocation];
@@ -147,8 +147,19 @@
             [self moveRangeSelectorToRange:updatedRange cancelAnimation:NO];
             
             // And fire the delegate method
-            [self callRangeDidMoveDelegateWithRange:updatedRange];
-        }];
+            [self callRangeDidMoveDelegateWithRange:updatedRange animationCompleted:NO];
+        }
+         completionBlock:^(CGFloat position) {
+             // This is the code which will get called to update the position
+             CGFloat centrePixelLocation = position * self->chart.canvas.bounds.size.width;
+             
+             // Create the range
+             SChartRange *updatedRange = [self rangeCentredOnPixelValue:centrePixelLocation];
+             
+             // Ensure that this newly created range is within the bounds of the chart
+             updatedRange = [self ensureWithinChartBounds:updatedRange maintainingSpan:YES];
+             [self callRangeDidMoveDelegateWithRange:updatedRange animationCompleted:YES];
+         }];
         
     } else {                
         // Create the range
@@ -161,7 +172,7 @@
         [self moveRangeSelectorToRange:updatedRange];
         
         // And fire the delegate method
-        [self callRangeDidMoveDelegateWithRange:updatedRange];
+        [self callRangeDidMoveDelegateWithRange:updatedRange animationCompleted:NO];
     }
 }
 
@@ -196,17 +207,22 @@
     // Move the selector
     [self moveRangeSelectorToRange:newRange];
     
+    
+    BOOL completed = NO;
+    if(recogniser.state == UIGestureRecognizerStateEnded) {
+        completed = YES;
+    }
     // And fire the delegate method
-    [self callRangeDidMoveDelegateWithRange:newRange];
+    [self callRangeDidMoveDelegateWithRange:newRange animationCompleted:completed];
 }
 
 
 #pragma mark - Utility Methods
-- (void)callRangeDidMoveDelegateWithRange:(SChartRange*)range
+- (void)callRangeDidMoveDelegateWithRange:(SChartRange*)range animationCompleted:(BOOL)completed
 {
     // We call the delegate a few times, so have wrapped it up in a utility method
-    if (self.delegate && [self.delegate respondsToSelector:@selector(rangeAnnotation:didMoveToRange:)]) {
-        [self.delegate rangeAnnotation:self didMoveToRange:range];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(rangeAnnotation:didMoveToRange:animationCompleted:)]) {
+        [self.delegate rangeAnnotation:self didMoveToRange:range animationCompleted:completed];
     }
 }
 

@@ -19,12 +19,12 @@
 /**
  Default duration of 0.3s and animation curve of SChartAnimationCurveEaseOut
  */
-- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity updateBlock:(void (^)(CGFloat position))updateBlock;
+- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity updateBlock:(void (^)(CGFloat position))updateBlock completionBlock:(void (^)(CGFloat))completionBlock;
 
 /**
  Default animation curve of SChartAnimationCurveEaseOut
  */
-- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration updateBlock:(void (^)(CGFloat))updateBlock;
+- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration updateBlock:(void (^)(CGFloat))updateBlock completionBlock:(void (^)(CGFloat))completionBlock;
 
 /**
  Creates an animation which begins at a given (normalised) position with a (normalised)
@@ -35,8 +35,9 @@
  @param animationCurve The shape of the curve used for animation.
  @param updateBlock    This block will be repeatedly called with new position values
                        These values will be normalised (i.e. in the same space as startPosition)
+ @param completionBlock This block will be called when the animation has come to a halt
  */
-- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration animationCurve:(id<SChartAnimationCurve>)curve updateBlock:(void (^)(CGFloat))updateBlock;
+- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration animationCurve:(id<SChartAnimationCurve>)curve updateBlock:(void (^)(CGFloat))updateBlock completionBlock:(void (^)(CGFloat))completionBlock;
 
 /**
  Cancels any animations which are currently in progress

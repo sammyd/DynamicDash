@@ -26,6 +26,6 @@
 @protocol ShinobiRangeAnnotationDelegate <NSObject>
 
 @required
-- (void)rangeAnnotation:(ShinobiRangeAnnotationManager*)annotation didMoveToRange:(SChartRange*)range;
+- (void)rangeAnnotation:(ShinobiRangeAnnotationManager*)annotation didMoveToRange:(SChartRange*)range animationCompleted:(BOOL)completed;
 
 @end

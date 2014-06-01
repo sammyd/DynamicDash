@@ -12,6 +12,7 @@
 @interface MomentumAnimation () {
     CGFloat animationStartTime, animationDuration;
     void (^positionUpdateBlock)(CGFloat);
+    void (^animationCompletionBlock)(CGFloat);
     CGFloat startPos, endPos;
     BOOL animating;
     id<SChartAnimationCurve> animationCurve;
@@ -21,24 +22,26 @@
 
 @implementation MomentumAnimation
 
-- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity updateBlock:(void (^)(CGFloat))updateBlock
+- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity updateBlock:(void (^)(CGFloat))updateBlock completionBlock:(void (^)(CGFloat))completionBlock
 {
     [self animateWithStartPosition:startPosition
                      startVelocity:velocity
                           duration:0.3f
-                       updateBlock:updateBlock];
+                       updateBlock:updateBlock
+                   completionBlock:completionBlock];
 }
 
-- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration updateBlock:(void (^)(CGFloat))updateBlock
+- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration updateBlock:(void (^)(CGFloat))updateBlock completionBlock:(void (^)(CGFloat))completionBlock
 {
     [self animateWithStartPosition:startPosition
                      startVelocity:velocity
                           duration:duration
                     animationCurve:[SChartEaseOutAnimationCurve new]
-                       updateBlock:updateBlock];
+                       updateBlock:updateBlock
+                   completionBlock:completionBlock];
 }
 
-- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration animationCurve:(id<SChartAnimationCurve>)curve updateBlock:(void (^)(CGFloat))updateBlock
+- (void)animateWithStartPosition:(CGFloat)startPosition startVelocity:(CGFloat)velocity duration:(CGFloat)duration animationCurve:(id<SChartAnimationCurve>)curve updateBlock:(void (^)(CGFloat))updateBlock completionBlock:(void (^)(CGFloat))completionBlock
 {
     /*
      Calculate the end position. The positions we are dealing with are proportions
@@ -58,6 +61,7 @@
     
     // Save off the required variables as ivars
     positionUpdateBlock = updateBlock;
+    animationCompletionBlock = completionBlock;
     startPos = startPosition;
     
     // Start an animation loop
@@ -87,6 +91,9 @@
         
         // Recurse. We aim here for 20 updates per second.
         [self performSelector:@selector(continueAnimation) withObject:nil afterDelay:0.05f];
+    } else {
+        // Call the animation completetion block
+        animationCompletionBlock(endPos);
     }
 }
 

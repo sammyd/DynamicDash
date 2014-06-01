@@ -10,7 +10,7 @@
 #import "SCAnnotationAnimator.h"
 #import "ShinobiRangeAnnotationManager.h"
 
-@interface SCRangeHighlightChart () <SChartDatasource>
+@interface SCRangeHighlightChart () <SChartDatasource, ShinobiRangeAnnotationDelegate>
 
 @property (nonatomic, strong) NSArray *datapoints;
 @property (nonatomic, strong) SChartLineSeries *lineSeries;
@@ -46,6 +46,7 @@
     self.xAxis = [SChartDateTimeAxis new];
     self.yAxis = [SChartNumberAxis new];
     self.rangeAnnotationManager = [[ShinobiRangeAnnotationManager alloc] initWithChart:self minimumSpan:7*24*3600];
+    self.rangeAnnotationManager.delegate = self;
     [self moveHighlightToDateRange:nil];
 }
 
@@ -113,6 +114,16 @@
 - (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
 {
     return self.datapoints[dataIndex];
+}
+
+#pragma mark - ShinobiRangeAnnotationDelegate methods
+- (void)rangeAnnotation:(ShinobiRangeAnnotationManager *)annotation
+         didMoveToRange:(SChartRange *)range
+     animationCompleted:(BOOL)completed
+{
+    if(completed) {
+        NSLog(@"#### Completed #### - %@", range);
+    }
 }
 
 @end
