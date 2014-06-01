@@ -9,10 +9,23 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "SCColourTheme.h"
 
+@class SCRangeHighlightChart;
+
+@protocol SCRangeHighlightChartDelegate <NSObject>
+
+@required
+- (void)rangeHighlightChart:(SCRangeHighlightChart *)chart didSelectDateRange:(SChartDateRange *)range;
+
+@end
+
+
 @interface SCRangeHighlightChart : ShinobiChart
+
+@property (nonatomic, weak) id<SCRangeHighlightChartDelegate> rangeDelegate;
 
 - (void)setData:(NSDictionary *)data;
 - (void)applyColourTheme:(id<SCColourTheme>)theme;
 - (void)moveHighlightToDateRange:(SChartDateRange *)range;
 
 @end
+

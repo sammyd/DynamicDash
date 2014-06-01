@@ -122,7 +122,13 @@
      animationCompleted:(BOOL)completed
 {
     if(completed) {
-        NSLog(@"#### Completed #### - %@", range);
+        if(self.rangeDelegate &&
+           [self.rangeDelegate respondsToSelector:@selector(rangeHighlightChart:didSelectDateRange:)]) {
+            // Need to convert the range :(
+            SChartDateRange *dateRange = [[SChartDateRange alloc] initWithMinimum:range.minimum
+                                                                       andMaximum:range.maximum];
+            [self.rangeDelegate rangeHighlightChart:self didSelectDateRange:dateRange];
+        }
     }
 }
 

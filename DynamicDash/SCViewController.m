@@ -18,7 +18,7 @@
 #import "NSDate+Quarterly.h"
 #import "SCSIMultiplierGaugeLabelDelegate.h"
 
-@interface SCViewController ()
+@interface SCViewController () <SCRangeHighlightChartDelegate>
 
 @property (nonatomic, strong) SCNorthwindData *northwind;
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *categoryDatasource;
@@ -58,6 +58,7 @@
     
     [self.weeklySalesChart setData:[self.northwind salesPerWeek]];
     self.weeklySalesChart.title = @"Weekly Sales Totals";
+    self.weeklySalesChart.rangeDelegate = self;
     
     
     [self setYear:1997 quarter:1];
@@ -65,8 +66,20 @@
 
 - (void)setYear:(NSUInteger)year quarter:(NSUInteger)quarter
 {
-    NSDictionary *categorySales = [self.northwind salesPerCategoryForYear:year quarter:quarter];
-    NSDictionary *categoryOrders = [self.northwind ordersPerCategoryForYear:year quarter:quarter];
+    [self setVisibleDatesFrom:[NSDate firstDayOfQuarter:quarter year:year]
+                       toDate:[NSDate lastDayOfQuarter:quarter year:year]];
+    
+    [self.salesGauge springAnimateToValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue]];
+    [self.ordersGauge springAnimateToValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue]];
+    
+    NSDictionary *shipperOrders = [self.northwind ordersPerShipperForYear:year quarter:quarter];
+    [self.shippersDatasource animateToValuesInDictionary:shipperOrders];
+}
+
+- (void)setVisibleDatesFrom:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    NSDictionary *categorySales = [self.northwind salesPerCategoryFromDate:fromDate toDate:toDate];
+    NSDictionary *categoryOrders = [self.northwind ordersPerCategoryFromDate:fromDate toDate:toDate];
     NSMutableDictionary *newCategoryValues = [NSMutableDictionary new];
     [self.categoryDatasource.categories enumerateObjectsUsingBlock:^(NSString *category, NSUInteger idx, BOOL *stop) {
         NSNumber *sales = categorySales[category] ? categorySales[category] : @0;
@@ -77,9 +90,8 @@
     
     [self.categoryDatasource animateToValuesInDictionary:[newCategoryValues copy]];
     
-    
-    NSDictionary *employeeSales = [self.northwind salesPerEmployeeForYear:year quarter:quarter];
-    NSDictionary *employeeOrders = [self.northwind ordersPerEmployeeForYear:year quarter:quarter];
+    NSDictionary *employeeSales = [self.northwind salesPerEmployeeFromDate:fromDate toDate:toDate];
+    NSDictionary *employeeOrders = [self.northwind ordersPerEmployeeFromDate:fromDate toDate:toDate];
     NSMutableDictionary *newEmployeeValues = [NSMutableDictionary new];
     [self.employeeDatasource.categories enumerateObjectsUsingBlock:^(NSString *employee, NSUInteger idx, BOOL *stop) {
         NSNumber *sales = employeeSales[employee] ? employeeSales[employee] : @0;
@@ -90,17 +102,15 @@
     
     [self.employeeDatasource animateToValuesInDictionary:[newEmployeeValues copy]];
     
-    
-    [self.salesGauge springAnimateToValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue]];
-    [self.ordersGauge springAnimateToValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue]];
-    
-    NSDictionary *shipperOrders = [self.northwind ordersPerShipperForYear:year quarter:quarter];
-    [self.shippersDatasource animateToValuesInDictionary:shipperOrders];
-    
-    
-    SChartDateRange *quarterDateRange = [[SChartDateRange alloc] initWithDateMinimum:[NSDate firstDayOfQuarter:quarter year:year]
-                                                                      andDateMaximum:[NSDate lastDayOfQuarter:quarter year:year]];
-    [self.weeklySalesChart moveHighlightToDateRange:quarterDateRange];
+    SChartDateRange *dateRange = [[SChartDateRange alloc] initWithDateMinimum:fromDate
+                                                               andDateMaximum:toDate];
+    [self.weeklySalesChart moveHighlightToDateRange:dateRange];
+}
+
+#pragma mark - SChartRangeHighlightChartDelegate methods
+- (void)rangeHighlightChart:(SCRangeHighlightChart *)chart didSelectDateRange:(SChartDateRange *)range
+{
+    [self setVisibleDatesFrom:range.minimumAsDate toDate:range.maximumAsDate];
 }
 
 #pragma mark - Utility Methods
