@@ -38,9 +38,14 @@
     self.northwind = [SCNorthwindData new];
     self.categoryDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.categoryChart categories:[self.northwind productCategories]];
     self.categoryChart.title = @"Orders/Sales per Category";
+    [self.categoryChart.allYAxes[0] setTitle:@"Sales ($k)"];
+    [self.categoryChart.allYAxes[1] setTitle:@"Orders"];
+    
     
     self.employeeDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.employeeChart categories:[self.northwind employeeNames]];
     self.employeeChart.title = @"Orders/Sales per Employee";
+    [self.employeeChart.allYAxes[0] setTitle:@"Sales ($k)"];
+    [self.employeeChart.allYAxes[1] setTitle:@"Orders"];
     
     self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
     

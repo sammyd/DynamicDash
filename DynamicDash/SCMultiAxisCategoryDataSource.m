@@ -75,7 +75,7 @@
     self.chart.backgroundColor = themeColours[1];
     
     SChartAxis *leftYAxis = self.yAxes[0];
-    leftYAxis.style.majorTickStyle.showLabels = NO;
+    leftYAxis.style.majorTickStyle.textAlignment = NSTextAlignmentRight;
     
     SChartAxis *rightYAxis = self.yAxes[1];
     rightYAxis.style.majorTickStyle.textAlignment = NSTextAlignmentLeft;
@@ -95,6 +95,11 @@
     SChartNumberAxis *firstYAxis = [SChartNumberAxis new];
     [chart addYAxis:firstYAxis];
     firstYAxis.rangePaddingHigh = @(5000);
+    NSNumberFormatter *labelFormatter = [firstYAxis.labelFormatter numberFormatter];
+    [labelFormatter setMultiplier:@0.001];
+    [labelFormatter setMinimumFractionDigits:1];
+    
+    
     SChartNumberAxis *secondYAxis = [SChartNumberAxis new];
     secondYAxis.axisPosition = SChartAxisPositionReverse;
     secondYAxis.rangePaddingHigh = @(2);
@@ -206,13 +211,6 @@
         centre.y -= tickMark.tickLabel.bounds.size.width + [axis spaceRequiredToDrawWithTitle:NO] + 5;
         tickMark.tickLabel.center = centre;
     }
-}
-
-- (void)sChart:(ShinobiChart *)chart alterDataPointLabel:(SChartDataPointLabel *)label forDataPoint:(SChartDataPoint *)dataPoint inSeries:(SChartSeries *)series
-{
-    CGFloat value = [dataPoint.yValue floatValue] / 1000.0;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.text = [NSString stringWithFormat:@"%0.1fk", value];
 }
 
 @end
