@@ -27,6 +27,9 @@
     self.style.knobBorderWidth = 0;
     self.style.knobRadius = 10;
     self.style.needleWidth = 12;
+    
+    self.style.qualitativeRangeInnerPosition = 0.85;
+    self.style.qualitativeRangeOuterPosition = 0.95;
 }
 
 @end

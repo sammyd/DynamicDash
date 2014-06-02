@@ -59,7 +59,6 @@
     self.weeklySalesChart.rangeDelegate = self;
     
     
-    
     self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
     
     self.colourThemeManager = [SCColourThemeManager new];
@@ -67,13 +66,7 @@
     [self setColourThemeWithName:@"blue"];
     
     self.gaugeDelegate = [SCSIMultiplierGaugeLabelDelegate new];
-    self.ordersGauge.minimumValue = @0;
-    self.ordersGauge.maximumValue = @450;
-    self.ordersGauge.delegate = self.gaugeDelegate;
-    self.salesGauge.minimumValue = @0;
-    self.salesGauge.maximumValue = @300000;
-    self.salesGauge.delegate = self.gaugeDelegate;
-    
+    [self prepareOrdersGaugeSinceBeginningOfYear:1998];
     
     [self setYear:1997 quarter:1];
 }
@@ -83,11 +76,36 @@
     [self setVisibleDatesFrom:[NSDate firstDayOfQuarter:quarter year:year]
                        toDate:[NSDate lastDayOfQuarter:quarter year:year]];
     
-    [self.salesGauge springAnimateToValue:[[self.northwind totalSalesForYear:year quarter:quarter] floatValue]];
-    [self.ordersGauge springAnimateToValue:[[self.northwind totalOrdersForYear:year quarter:quarter] floatValue]];
-    
     NSDictionary *shipperOrders = [self.northwind ordersPerShipperForYear:year quarter:quarter];
     [self.shippersDatasource animateToValuesInDictionary:shipperOrders];
+}
+
+- (void)prepareOrdersGaugeSinceBeginningOfYear:(NSUInteger)year
+{
+    self.ordersGauge.minimumValue = @0;
+    self.ordersGauge.maximumValue = @1000000;
+    self.ordersGauge.delegate = self.gaugeDelegate;
+    
+    // Prepare some qualitative ranges
+    NSArray *colors = @[[[UIColor redColor] colorWithAlphaComponent:0.3],
+                        [[UIColor orangeColor] colorWithAlphaComponent:0.3],
+                        [[UIColor yellowColor] colorWithAlphaComponent:0.3],
+                        [[UIColor greenColor] colorWithAlphaComponent:0.3]
+                        ];
+    self.ordersGauge.qualitativeRanges = @[
+                [SGaugeQualitativeRange rangeWithMinimum:nil maximum:@400000 color:colors[0]],
+                [SGaugeQualitativeRange rangeWithMinimum:@400000 maximum:@6000000 color:colors[1]],
+                [SGaugeQualitativeRange rangeWithMinimum:@600000 maximum:@7500000 color:colors[2]],
+                [SGaugeQualitativeRange rangeWithMinimum:@750000 maximum:nil color:colors[3]]
+                                           ];
+    
+    NSDateComponents *components = [NSDateComponents new];
+    components.day = 1;
+    components.month = 1;
+    components.year = year;
+    NSDate *start = [[NSCalendar currentCalendar] dateFromComponents:components];
+    NSNumber *value = [self.northwind totalSalesFromDate:start toDate:[NSDate date]];
+    [self.ordersGauge springAnimateToValue:[value floatValue]];
 }
 
 - (void)setVisibleDatesFrom:(NSDate *)fromDate toDate:(NSDate *)toDate
@@ -152,11 +170,13 @@
 {
     self.view.backgroundColor = colourTheme.darkColour;
     self.view.tintColor = colourTheme.lightColour;
-    self.dashboardTitle.textColor = colourTheme.lightColour;
+    self.dashboardTitle.textColor = colourTheme.darkColour;
+    self.dashboardTitle.backgroundColor = colourTheme.lightColour;
     
     // Date drill-down section & charts
     self.dateDrillDownContainer.backgroundColor = colourTheme.midLightColour;
     self.dateDrillDownTitle.textColor = colourTheme.darkColour;
+    self.dateDrillDownTitle.backgroundColor = colourTheme.lightColour;
 
     [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.categoryDatasource applyThemeColours:@[colourTheme.midColour, [UIColor clearColor]]];
@@ -167,11 +187,12 @@
     [self.weeklySalesChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.weeklySalesChart applyColourTheme:colourTheme];
     
+    // And the summary page
+    self.summaryContainer.backgroundColor = colourTheme.midColour;
+    
     // Apply theme to the gauge
-    [self.salesGauge applyColourTheme:colourTheme];
-    self.salesGauge.backgroundColor = colourTheme.midLightColour;
     [self.ordersGauge applyColourTheme:colourTheme];
-    self.ordersGauge.backgroundColor = colourTheme.lightColour;
+    self.ordersGauge.backgroundColor = colourTheme.midLightColour;
     
     // And the title labels in the storyboard
     [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
@@ -183,9 +204,6 @@
     if(sender == self.colourSegment) {
         NSString *themeName = [self.colourSegment titleForSegmentAtIndex:self.colourSegment.selectedSegmentIndex];
         [self setColourThemeWithName:themeName];
-    } else {
-        [self setYear:(self.yearSegment.selectedSegmentIndex + 1996)
-              quarter:(self.quarterSegment.selectedSegmentIndex + 1)];
     }
 }
 

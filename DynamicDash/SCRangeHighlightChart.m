@@ -83,6 +83,8 @@
     self.rangeAnnotationManager.outerRangeColor = [theme.lightColour colorWithAlphaComponent:0.4];
     self.rangeAnnotationManager.innerRangeColor = [UIColor clearColor];
     
+    self.titleLabel.backgroundColor = theme.midLightColour;
+    
     [self redrawChart];
 }
 

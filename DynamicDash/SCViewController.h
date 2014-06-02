@@ -14,22 +14,21 @@
 @interface SCViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *dashboardTitle;
-
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titleLabels;
 
 @property (weak, nonatomic) IBOutlet UIView *dateDrillDownContainer;
 @property (weak, nonatomic) IBOutlet UILabel *dateDrillDownTitle;
 @property (weak, nonatomic) IBOutlet ShinobiChart *employeeChart;
 @property (weak, nonatomic) IBOutlet ShinobiChart *categoryChart;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *yearSegment;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *quarterSegment;
-- (IBAction)handleSegmentChanged:(id)sender;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *colourSegment;
-
-@property (weak, nonatomic) IBOutlet SGaugeRadial *ordersGauge;
-@property (weak, nonatomic) IBOutlet SGaugeRadial *salesGauge;
-@property (weak, nonatomic) IBOutlet ShinobiChart *shippersChart;
 @property (weak, nonatomic) IBOutlet SCRangeHighlightChart *weeklySalesChart;
 
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titleLabels;
+@property (weak, nonatomic) IBOutlet UIView *summaryContainer;
+@property (weak, nonatomic) IBOutlet SGaugeRadial *ordersGauge;
+@property (weak, nonatomic) IBOutlet ShinobiChart *shippersChart;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *colourSegment;
+- (IBAction)handleSegmentChanged:(id)sender;
+
+
 
 @end

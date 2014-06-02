@@ -208,7 +208,13 @@
 
 - (NSNumber *)totalSalesForYear:(NSUInteger)year quarter:(NSUInteger)quarter
 {
-    NSDictionary *salesPerCategory = [self salesPerCategoryForYear:year quarter:quarter];
+    return [self totalSalesFromDate:[NSDate firstDayOfQuarter:quarter year:year]
+                             toDate:[NSDate lastDayOfQuarter:quarter year:year]];
+}
+
+- (NSNumber *)totalSalesFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    NSDictionary *salesPerCategory = [self salesPerCategoryFromDate:fromDate toDate:toDate];
     NSArray *sales = [salesPerCategory allValues];
     return [sales valueForKeyPath:@"@sum.self"];
 }
