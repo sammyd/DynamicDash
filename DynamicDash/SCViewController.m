@@ -37,12 +37,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.northwind = [SCNorthwindData new];
     self.categoryDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.categoryChart categories:[self.northwind productCategories]];
+    // Set some titles
+    self.categoryDatasource.lineSeries.title = @"Orders";
+    self.categoryDatasource.columnSeries.title = @"Sales";
     self.categoryChart.title = @"Orders/Sales per Category";
     [self.categoryChart.allYAxes[0] setTitle:@"Sales ($k)"];
     [self.categoryChart.allYAxes[1] setTitle:@"Orders"];
     
     
     self.employeeDatasource = [[SCMultiAxisCategoryDataSource alloc] initWithChart:self.employeeChart categories:[self.northwind employeeNames]];
+    // Set some titles
+    self.employeeDatasource.lineSeries.title = @"Orders";
+    self.employeeDatasource.columnSeries.title = @"Sales";
     self.employeeChart.title = @"Orders/Sales per Employee";
     [self.employeeChart.allYAxes[0] setTitle:@"Sales ($k)"];
     [self.employeeChart.allYAxes[1] setTitle:@"Orders"];

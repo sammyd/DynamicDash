@@ -27,6 +27,12 @@
         self.chartTitleStyle.font = [self.chartTitleStyle.font fontWithSize:18];
         self.chartTitleStyle.overlapChartTitle = YES;
         
+        // Set some legend details
+        self.legendStyle.showSymbols = YES;
+        self.legendStyle.borderColor = theme.darkColour;
+        self.legendStyle.fontColor = theme.darkColour;
+        self.legendStyle.areaColor = [theme.lightColour colorWithAlphaComponent:0.4];
+        
         // Axis settings
         self.xAxisStyle.lineColor = theme.darkColour;
         self.xAxisStyle.majorTickStyle.labelColor = theme.lightColour;

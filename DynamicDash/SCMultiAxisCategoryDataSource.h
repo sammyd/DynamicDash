@@ -17,6 +17,9 @@
 @property (nonatomic, strong, readonly) NSArray *categories;
 @property (nonatomic, strong, readonly) NSArray *yAxes;
 
+@property (nonatomic, strong, readonly) SChartLineSeries *lineSeries;
+@property (nonatomic, strong, readonly) SChartColumnSeries *columnSeries;
+
 - (void)animateToValues:(NSArray *)values;
 - (void)animateToValuesInDictionary:(NSDictionary *)dict;
 - (void)applyThemeColours:(NSArray *)themeColours;

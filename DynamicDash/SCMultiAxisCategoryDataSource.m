@@ -106,6 +106,11 @@
     [chart addYAxis:secondYAxis];
     self.yAxes = @[firstYAxis, secondYAxis];
     
+    chart.legend.hidden = NO;
+    chart.legend.position = SChartLegendPositionTopRight;
+    chart.legend.placement = SChartLegendPlacementInsidePlotArea;
+    
+    
     chart.datasource = self;
     chart.delegate = self;
     
