@@ -27,6 +27,10 @@
 
 @property (nonatomic, strong) id<ShinobiRangeAnnotationDelegate> delegate;
 
+@property (nonatomic, strong) UIColor *innerRangeColor;
+@property (nonatomic, strong) UIColor *outerRangeColor;
+@property (nonatomic, strong) UIColor *handleLineColor;
+
 - (id)initWithChart:(ShinobiChart *)chart;
 - (id)initWithChart:(ShinobiChart *)chart minimumSpan:(CGFloat)minSpan;
 - (void)moveRangeSelectorToRange:(SChartRange *)range;

@@ -23,7 +23,7 @@
 
 @implementation ShinobiRangeSelectionAnnotation
 
-- (id)initWithFrame:(CGRect)frame xValue:(id)xValue xValueMax:(id)xValueMax xAxis:(SChartAxis *)xAxis yAxis:(SChartAxis *)yAxis
+- (id)initWithFrame:(CGRect)frame xValue:(id)xValue xValueMax:(id)xValueMax xAxis:(SChartAxis *)xAxis yAxis:(SChartAxis *)yAxis color:(UIColor *)color
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -34,7 +34,7 @@
         self.yValueMax = nil;
         self.xValue = xValue;
         self.xValueMax = xValueMax;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = color;
     }
     return self;
 }

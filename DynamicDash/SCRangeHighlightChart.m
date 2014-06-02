@@ -79,6 +79,10 @@
     self.xAxis.style.majorTickStyle.labelColor = theme.darkColour;
     self.yAxis.style.majorTickStyle.labelColor = theme.darkColour;
     
+    self.rangeAnnotationManager.handleLineColor = theme.midDarkColour;
+    self.rangeAnnotationManager.outerRangeColor = [theme.lightColour colorWithAlphaComponent:0.4];
+    self.rangeAnnotationManager.innerRangeColor = [UIColor clearColor];
+    
     [self redrawChart];
 }
 

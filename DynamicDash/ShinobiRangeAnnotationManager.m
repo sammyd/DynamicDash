@@ -56,6 +56,12 @@
     if(self) {
         chart = _chart;
         minimumSpan = minSpan;
+        
+        // Default values
+        self.innerRangeColor = [UIColor clearColor];
+        self.outerRangeColor = [UIColor colorWithWhite:0.1f alpha:0.3f];
+        self.handleLineColor = [UIColor colorWithWhite:0.2 alpha:1.f];
+        
         [self createAnnotations];
         [self prepareGestureRecognisers];
         // Let's make an animation instance here. We'll use this whenever we need momentum
@@ -64,20 +70,45 @@
     return self;
 }
 
+#pragma mark - Override property setters
+- (void)setInnerRangeColor:(UIColor *)innerRangeColor
+{
+    if(innerRangeColor != _innerRangeColor) {
+        _innerRangeColor = innerRangeColor;
+        [self recolorRangeSelector];
+    }
+}
+
+- (void)setOuterRangeColor:(UIColor *)outerRangeColor
+{
+    if(outerRangeColor != _outerRangeColor) {
+        _outerRangeColor = outerRangeColor;
+        [self recolorRangeSelector];
+    }
+}
+
+- (void)setHandleLineColor:(UIColor *)handleLineColor
+{
+    if(handleLineColor != _handleLineColor) {
+        _handleLineColor = handleLineColor;
+        [self recolorRangeSelector];
+    }
+}
+
 #pragma mark - Manager setup
 - (void)createAnnotations
 {
-    // Lines are pretty simple
-    leftLine = [SChartAnnotation verticalLineAtPosition:nil withXAxis:chart.xAxis andYAxis:chart.yAxis withWidth:3.f withColor:[UIColor colorWithWhite:0.2 alpha:1.f]];
-    rightLine = [SChartAnnotation verticalLineAtPosition:nil withXAxis:chart.xAxis andYAxis:chart.yAxis withWidth:3.f withColor:[UIColor colorWithWhite:0.2 alpha:1.f]];
     // Shading is either side of the line
-    leftShading = [SChartAnnotation verticalBandAtPosition:chart.xAxis.axisRange.minimum andMaxX:nil withXAxis:chart.xAxis andYAxis:chart.yAxis withColor:[UIColor colorWithWhite:0.1f alpha:0.3f]];
-    rightShading = [SChartAnnotation verticalBandAtPosition:nil andMaxX:chart.xAxis.axisRange.maximum withXAxis:chart.xAxis andYAxis:chart.yAxis withColor:[UIColor colorWithWhite:0.1f alpha:0.3f]];
+    leftShading = [SChartAnnotation verticalBandAtPosition:chart.xAxis.axisRange.minimum andMaxX:nil withXAxis:chart.xAxis andYAxis:chart.yAxis withColor:self.outerRangeColor];
+    rightShading = [SChartAnnotation verticalBandAtPosition:nil andMaxX:chart.xAxis.axisRange.maximum withXAxis:chart.xAxis andYAxis:chart.yAxis withColor:self.outerRangeColor];
     // The invisible range selection
-    rangeSelection = [[ShinobiRangeSelectionAnnotation alloc] initWithFrame:CGRectMake(0, 0, 1, 1) xValue:chart.xAxis.axisRange.minimum xValueMax:chart.xAxis.axisRange.maximum xAxis:chart.xAxis yAxis:chart.yAxis];
+    rangeSelection = [[ShinobiRangeSelectionAnnotation alloc] initWithFrame:CGRectMake(0, 0, 1, 1) xValue:chart.xAxis.axisRange.minimum xValueMax:chart.xAxis.axisRange.maximum xAxis:chart.xAxis yAxis:chart.yAxis color:self.innerRangeColor];
+    // Lines are pretty simple
+    leftLine = [SChartAnnotation verticalLineAtPosition:nil withXAxis:chart.xAxis andYAxis:chart.yAxis withWidth:3.f withColor:self.handleLineColor];
+    rightLine = [SChartAnnotation verticalLineAtPosition:nil withXAxis:chart.xAxis andYAxis:chart.yAxis withWidth:3.f withColor:self.handleLineColor];
     // Create the handles
-    leftGripper = [[ShinobiRangeHandleAnnotation alloc] initWithFrame:CGRectMake(0, 0, 30, 80) colour:[UIColor colorWithWhite:0.2 alpha:1.f] xValue:chart.xAxis.axisRange.minimum xAxis:chart.xAxis yAxis:chart.yAxis];
-    rightGripper = [[ShinobiRangeHandleAnnotation alloc] initWithFrame:CGRectMake(0, 0, 30, 80) colour:[UIColor colorWithWhite:0.2 alpha:1.f] xValue:chart.xAxis.axisRange.maximum xAxis:chart.xAxis yAxis:chart.yAxis];
+    leftGripper = [[ShinobiRangeHandleAnnotation alloc] initWithFrame:CGRectMake(0, 0, 20, 45) colour:self.handleLineColor xValue:chart.xAxis.axisRange.minimum xAxis:chart.xAxis yAxis:chart.yAxis];
+    rightGripper = [[ShinobiRangeHandleAnnotation alloc] initWithFrame:CGRectMake(0, 0, 20, 45) colour:self.handleLineColor xValue:chart.xAxis.axisRange.maximum xAxis:chart.xAxis yAxis:chart.yAxis];
     
     
     // Add the annotations to the chart
@@ -218,6 +249,23 @@
 
 
 #pragma mark - Utility Methods
+- (void)recolorRangeSelector
+{
+    // Lines & grippers
+    leftGripper.backgroundColor = self.handleLineColor;
+    rightGripper.backgroundColor = self.handleLineColor;
+    leftLine.backgroundColor = self.handleLineColor;
+    rightLine.backgroundColor = self.handleLineColor;
+    
+    // Inner shading
+    rangeSelection.backgroundColor = self.innerRangeColor;
+
+    // Outer shading
+    leftShading.backgroundColor = self.outerRangeColor;
+    rightShading.backgroundColor = self.outerRangeColor;
+}
+
+
 - (void)callRangeDidMoveDelegateWithRange:(SChartRange*)range animationCompleted:(BOOL)completed
 {
     // We call the delegate a few times, so have wrapped it up in a utility method

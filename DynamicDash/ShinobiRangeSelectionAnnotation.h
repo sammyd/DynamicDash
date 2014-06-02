@@ -23,6 +23,6 @@
 
 @interface ShinobiRangeSelectionAnnotation : SChartAnnotationZooming
 
-- (id)initWithFrame:(CGRect)frame xValue:(id)xValue xValueMax:(id)xValueMax xAxis:(SChartAxis*)xAxis yAxis:(SChartAxis*)yAxis;
+- (id)initWithFrame:(CGRect)frame xValue:(id)xValue xValueMax:(id)xValueMax xAxis:(SChartAxis*)xAxis yAxis:(SChartAxis*)yAxis color:(UIColor *)color;
 
 @end

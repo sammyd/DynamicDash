@@ -102,7 +102,7 @@
     
     SChartNumberAxis *secondYAxis = [SChartNumberAxis new];
     secondYAxis.axisPosition = SChartAxisPositionReverse;
-    secondYAxis.rangePaddingHigh = @(2);
+    secondYAxis.rangePaddingHigh = @(10);
     [chart addYAxis:secondYAxis];
     self.yAxes = @[firstYAxis, secondYAxis];
     
