@@ -66,18 +66,18 @@
 
 - (void)applyColourTheme:(id<SCColourTheme>)theme
 {
-    self.backgroundColor = theme.midColour;
+    self.backgroundColor = [UIColor clearColor];
     self.plotAreaBackgroundColor = [UIColor clearColor];
     self.canvasAreaBackgroundColor = [UIColor clearColor];
-    self.lineSeries.style.lineColor = theme.lightColour;
+    self.lineSeries.style.lineColor = theme.midDarkColour;
     self.lineSeries.style.lineWidth = @4;
-    self.xAxis.style.lineColor = theme.midLightColour;
+    self.xAxis.style.lineColor = theme.darkColour;
     self.xAxis.style.lineWidth = @2;
     self.xAxis.style.majorTickStyle.tickLabelOrientation = TickLabelOrientationHorizontal;
-    self.yAxis.style.lineColor = theme.midLightColour;
+    self.yAxis.style.lineColor = theme.darkColour;
     self.yAxis.style.lineWidth = @2;
-    self.xAxis.style.majorTickStyle.labelColor = theme.lightColour;
-    self.yAxis.style.majorTickStyle.labelColor = theme.lightColour;
+    self.xAxis.style.majorTickStyle.labelColor = theme.darkColour;
+    self.yAxis.style.majorTickStyle.labelColor = theme.darkColour;
     
     [self redrawChart];
 }

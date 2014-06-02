@@ -25,14 +25,15 @@
         self.chartStyle.canvasBackgroundColor = [UIColor clearColor];
         self.chartTitleStyle.textColor = theme.darkColour;
         self.chartTitleStyle.font = [self.chartTitleStyle.font fontWithSize:18];
+        self.chartTitleStyle.overlapChartTitle = YES;
         
         // Axis settings
         self.xAxisStyle.lineColor = theme.darkColour;
         self.xAxisStyle.majorTickStyle.labelColor = theme.lightColour;
         self.xAxisStyle.majorTickStyle.tickLabelOrientation = TickLabelOrientationVertical;
         self.yAxisStyle.lineColor = theme.darkColour;
-        self.yAxisStyle.majorTickStyle.labelColor = theme.lightColour;
-        self.yAxisStyle.titleStyle.textColor = theme.lightColour;
+        self.yAxisStyle.majorTickStyle.labelColor = theme.darkColour;
+        self.yAxisStyle.titleStyle.textColor = theme.darkColour;
         
         // Sort the series styles
         SChartColumnSeriesStyle *style = [self columnSeriesStyleForSeriesAtIndex:0 selected:NO];

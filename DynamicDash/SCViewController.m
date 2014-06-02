@@ -131,12 +131,14 @@
 {
     self.view.backgroundColor = colourTheme.darkColour;
     self.view.tintColor = colourTheme.lightColour;
+    
+    // Date drill-down section & charts
+    self.dateDrillDownContainer.backgroundColor = colourTheme.midLightColour;
+    
     [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
-    [self.categoryDatasource applyThemeColours:@[colourTheme.midColour, colourTheme.midLightColour,
-                                                 colourTheme.midDarkColour, colourTheme.darkColour]];
+    [self.categoryDatasource applyThemeColours:@[colourTheme.midColour, [UIColor clearColor]]];
     [self.employeeChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
-    [self.employeeDatasource applyThemeColours:@[colourTheme.midLightColour, colourTheme.midColour,
-                                                 colourTheme.midDarkColour, colourTheme.darkColour]];
+    [self.employeeDatasource applyThemeColours:@[colourTheme.midColour, [UIColor clearColor]]];
     [self.shippersChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.shippersDatasource applyTheme:colourTheme];
     [self.weeklySalesChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];

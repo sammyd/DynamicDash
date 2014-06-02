@@ -13,6 +13,7 @@
 
 @interface SCViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *dateDrillDownContainer;
 @property (weak, nonatomic) IBOutlet ShinobiChart *employeeChart;
 @property (weak, nonatomic) IBOutlet ShinobiChart *categoryChart;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *yearSegment;
