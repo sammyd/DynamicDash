@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Jt-Xo-Rt8">
-                                <rect key="frame" x="784" y="276" width="134" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Jt-Xo-Rt8">
+                                <rect key="frame" x="784" y="322" width="134" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="1996"/>
@@ -29,8 +29,8 @@
                                     <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="A5v-de-DI0"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eaZ-eX-GAT">
-                                <rect key="frame" x="784" y="312" width="131" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eaZ-eX-GAT">
+                                <rect key="frame" x="784" y="358" width="131" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Q1"/>
@@ -42,8 +42,8 @@
                                     <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ur2-x9-n4j"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-Ce-E0e" customClass="SGaugeRadial">
-                                <rect key="frame" x="528" y="20" width="256" height="256"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-Ce-E0e" customClass="SGaugeRadial">
+                                <rect key="frame" x="528" y="66" width="256" height="256"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="orders in quarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dp-k3-sCV">
@@ -60,8 +60,8 @@
                                     <constraint firstAttribute="centerX" secondItem="9dp-k3-sCV" secondAttribute="centerX" id="xjG-iX-EeF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
-                                <rect key="frame" x="784" y="20" width="257" height="256"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6T-DM-Jb9" customClass="SGaugeRadial">
+                                <rect key="frame" x="784" y="66" width="256" height="256"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sales in quarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adb-Ux-AKM">
@@ -78,13 +78,13 @@
                                     <constraint firstAttribute="centerX" secondItem="Adb-Ux-AKM" secondAttribute="centerX" constant="-0.5" id="VtW-Th-nuO"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
-                                <rect key="frame" x="528" y="276" width="256" height="256"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-Tk-AkE" customClass="ShinobiChart">
+                                <rect key="frame" x="528" y="322" width="256" height="256"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.81655546494562947" green="0.1942063830382974" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-QH-L34">
-                                <rect key="frame" x="784" y="348" width="269" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-QH-L34">
+                                <rect key="frame" x="784" y="394" width="269" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Blue"/>
@@ -97,25 +97,31 @@
                                     <action selector="handleSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uLP-q3-KMF"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gzK-Ko-t0a">
-                                <rect key="frame" x="8" y="20" width="512" height="740"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzK-Ko-t0a">
+                                <rect key="frame" x="8" y="66" width="512" height="694"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-tl-TqT" customClass="ShinobiChart">
-                                        <rect key="frame" x="8" y="8" width="496" height="260"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-tl-TqT" customClass="ShinobiChart">
+                                        <rect key="frame" x="8" y="37" width="496" height="234"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="0.30933056327994846" blue="0.42992015482251567" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z40-th-w15" customClass="ShinobiChart">
-                                        <rect key="frame" x="8" y="284" width="496" height="260"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z40-th-w15" customClass="ShinobiChart">
+                                        <rect key="frame" x="8" y="287" width="496" height="234"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.68210315537433064" green="1" blue="0.46133558775835282" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-HF-qhN" customClass="SCRangeHighlightChart">
-                                        <rect key="frame" x="8" y="560" width="496" height="172"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-HF-qhN" customClass="SCRangeHighlightChart">
+                                        <rect key="frame" x="8" y="529" width="496" height="157"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.66261010898712125" green="1" blue="0.9187821845158326" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales figures from xxx to yyy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCJ-K3-ZtA">
+                                        <rect key="frame" x="116" y="4" width="281" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.99355185379760036" blue="0.57250216881698446" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -125,22 +131,31 @@
                                     <constraint firstItem="z40-th-w15" firstAttribute="height" secondItem="RqQ-HF-qhN" secondAttribute="height" multiplier="1.5" id="CE9-Va-ZI2"/>
                                     <constraint firstAttribute="bottom" secondItem="RqQ-HF-qhN" secondAttribute="bottom" constant="8" id="Fd2-Oo-FSn"/>
                                     <constraint firstAttribute="trailing" secondItem="gcs-tl-TqT" secondAttribute="trailing" constant="8" id="IgE-bX-FiQ"/>
-                                    <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="gzK-Ko-t0a" secondAttribute="top" constant="8" id="K5g-EI-MSF"/>
                                     <constraint firstItem="z40-th-w15" firstAttribute="centerX" secondItem="RqQ-HF-qhN" secondAttribute="centerX" id="LOh-ok-E9N"/>
-                                    <constraint firstItem="RqQ-HF-qhN" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" constant="16" id="iVV-dR-jX7"/>
+                                    <constraint firstItem="RqQ-HF-qhN" firstAttribute="top" secondItem="z40-th-w15" secondAttribute="bottom" constant="8" id="iVV-dR-jX7"/>
+                                    <constraint firstAttribute="centerX" secondItem="cCJ-K3-ZtA" secondAttribute="centerX" id="id5-w6-rcS"/>
+                                    <constraint firstItem="gcs-tl-TqT" firstAttribute="top" secondItem="cCJ-K3-ZtA" secondAttribute="bottom" constant="4" id="mnk-4s-StP"/>
+                                    <constraint firstItem="cCJ-K3-ZtA" firstAttribute="top" secondItem="gzK-Ko-t0a" secondAttribute="top" constant="4" id="oNm-Oy-Lss"/>
                                     <constraint firstItem="z40-th-w15" firstAttribute="centerX" secondItem="gcs-tl-TqT" secondAttribute="centerX" id="sNf-Q5-WT5"/>
                                     <constraint firstItem="z40-th-w15" firstAttribute="width" secondItem="gcs-tl-TqT" secondAttribute="width" id="xux-PV-klE"/>
                                     <constraint firstAttribute="centerX" secondItem="gcs-tl-TqT" secondAttribute="centerX" id="zmI-I0-gvW"/>
                                     <constraint firstItem="z40-th-w15" firstAttribute="height" secondItem="gcs-tl-TqT" secondAttribute="height" id="znN-71-aSt"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales Dashboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dif-qY-0xu">
+                                <rect key="frame" x="397" y="20" width="230" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gzK-Ko-t0a" firstAttribute="top" secondItem="dif-qY-0xu" secondAttribute="bottom" constant="8" id="9g0-Bv-RF5"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="GsH-Tk-AkE" secondAttribute="width" id="9yP-Tm-TPg"/>
+                            <constraint firstItem="HXl-Ce-E0e" firstAttribute="top" secondItem="gzK-Ko-t0a" secondAttribute="top" id="OgR-l8-zUN"/>
                             <constraint firstItem="c6T-DM-Jb9" firstAttribute="leading" secondItem="HXl-Ce-E0e" secondAttribute="trailing" id="RKe-CY-HWF"/>
                             <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="GsH-Tk-AkE" secondAttribute="trailing" id="TV9-Um-6hw"/>
-                            <constraint firstItem="HXl-Ce-E0e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ui7-5A-4aw"/>
                             <constraint firstItem="eaZ-eX-GAT" firstAttribute="leading" secondItem="nEd-QH-L34" secondAttribute="leading" id="W0n-Eh-th0"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.25" id="W3c-4q-FmJ"/>
                             <constraint firstItem="gzK-Ko-t0a" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="WJe-zK-tou"/>
@@ -154,9 +169,10 @@
                             <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="leading" secondItem="eaZ-eX-GAT" secondAttribute="leading" id="kfn-ih-fZN"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="bottom" secondItem="c6T-DM-Jb9" secondAttribute="bottom" id="nMB-rM-cMn"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="height" secondItem="c6T-DM-Jb9" secondAttribute="height" id="nPY-8I-Hyq"/>
+                            <constraint firstAttribute="centerX" secondItem="dif-qY-0xu" secondAttribute="centerX" id="nxA-ez-FpS"/>
                             <constraint firstItem="GsH-Tk-AkE" firstAttribute="height" secondItem="HXl-Ce-E0e" secondAttribute="height" id="oOp-8O-Uj0"/>
-                            <constraint firstItem="gzK-Ko-t0a" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qQO-dE-70L"/>
                             <constraint firstItem="2Jt-Xo-Rt8" firstAttribute="top" secondItem="GsH-Tk-AkE" secondAttribute="top" id="qii-Br-AQv"/>
+                            <constraint firstItem="dif-qY-0xu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sv4-dj-hlb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gzK-Ko-t0a" secondAttribute="bottom" constant="8" id="xd2-oZ-ZhG"/>
                             <constraint firstItem="HXl-Ce-E0e" firstAttribute="leading" secondItem="gzK-Ko-t0a" secondAttribute="trailing" constant="8" id="yaj-if-ejA"/>
                         </constraints>
@@ -166,7 +182,9 @@
                     <connections>
                         <outlet property="categoryChart" destination="z40-th-w15" id="xRV-wn-jk5"/>
                         <outlet property="colourSegment" destination="nEd-QH-L34" id="XPV-X4-z2p"/>
+                        <outlet property="dashboardTitle" destination="dif-qY-0xu" id="1H2-Dv-thg"/>
                         <outlet property="dateDrillDownContainer" destination="gzK-Ko-t0a" id="Pim-l1-5Vz"/>
+                        <outlet property="dateDrillDownTitle" destination="cCJ-K3-ZtA" id="rZf-kn-sBV"/>
                         <outlet property="employeeChart" destination="gcs-tl-TqT" id="i8O-70-H8s"/>
                         <outlet property="ordersGauge" destination="HXl-Ce-E0e" id="3gU-Cf-hor"/>
                         <outlet property="quarterSegment" destination="eaZ-eX-GAT" id="RDj-lo-tOF"/>

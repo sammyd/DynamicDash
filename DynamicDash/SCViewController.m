@@ -53,6 +53,13 @@
     [self.employeeChart.allYAxes[0] setTitle:@"Sales ($k)"];
     [self.employeeChart.allYAxes[1] setTitle:@"Orders"];
     
+    [self.weeklySalesChart setData:[self.northwind salesPerWeek]];
+    self.weeklySalesChart.title = @"Weekly Sales Totals";
+    [self.weeklySalesChart.yAxis setTitle:@"Sales ($k)"];
+    self.weeklySalesChart.rangeDelegate = self;
+    
+    
+    
     self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
     
     self.colourThemeManager = [SCColourThemeManager new];
@@ -66,10 +73,6 @@
     self.salesGauge.minimumValue = @0;
     self.salesGauge.maximumValue = @300000;
     self.salesGauge.delegate = self.gaugeDelegate;
-    
-    [self.weeklySalesChart setData:[self.northwind salesPerWeek]];
-    self.weeklySalesChart.title = @"Weekly Sales Totals";
-    self.weeklySalesChart.rangeDelegate = self;
     
     
     [self setYear:1997 quarter:1];
@@ -122,6 +125,18 @@
 - (void)rangeHighlightChart:(SCRangeHighlightChart *)chart didSelectDateRange:(SChartDateRange *)range
 {
     [self setVisibleDatesFrom:range.minimumAsDate toDate:range.maximumAsDate];
+    // Update the title
+    static NSDateFormatter *titleDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        titleDateFormatter = [NSDateFormatter new];
+        titleDateFormatter.dateStyle = NSDateFormatterShortStyle;
+        titleDateFormatter.locale = [NSLocale systemLocale];
+    });
+    self.dateDrillDownTitle.text = [NSString stringWithFormat:@"Sales figures from %@ to %@",
+                                    [titleDateFormatter stringFromDate:range.minimumAsDate],
+                                    [titleDateFormatter stringFromDate:range.maximumAsDate]];
+    
 }
 
 #pragma mark - Utility Methods
@@ -137,10 +152,12 @@
 {
     self.view.backgroundColor = colourTheme.darkColour;
     self.view.tintColor = colourTheme.lightColour;
+    self.dashboardTitle.textColor = colourTheme.lightColour;
     
     // Date drill-down section & charts
     self.dateDrillDownContainer.backgroundColor = colourTheme.midLightColour;
-    
+    self.dateDrillDownTitle.textColor = colourTheme.darkColour;
+
     [self.categoryChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
     [self.categoryDatasource applyThemeColours:@[colourTheme.midColour, [UIColor clearColor]]];
     [self.employeeChart applyTheme:[SCColourableChartTheme themeWithColourTheme:colourTheme]];
