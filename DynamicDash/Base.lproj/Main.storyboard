@@ -127,22 +127,10 @@
                                             <constraint firstAttribute="centerY" secondItem="j7T-kd-ka1" secondAttribute="centerY" id="UCc-U4-Fkn"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whf-Ed-odf">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whf-Ed-odf" customClass="ShinobiDataGrid">
                                         <rect key="frame" x="8" y="491" width="483" height="195"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent order grid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNP-vi-lz7">
-                                                <rect key="frame" x="173" y="86" width="138" height="23"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="jNP-vi-lz7" secondAttribute="centerX" id="IPj-ui-fdD"/>
-                                            <constraint firstAttribute="centerY" secondItem="jNP-vi-lz7" secondAttribute="centerY" id="PZx-gt-ocU"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.65968549071204108" blue="0.26754893041660877" alpha="1" colorSpace="calibratedRGB"/>
@@ -190,6 +178,7 @@
                         <outlet property="dateDrillDownContainer" destination="gzK-Ko-t0a" id="Pim-l1-5Vz"/>
                         <outlet property="dateDrillDownTitle" destination="cCJ-K3-ZtA" id="rZf-kn-sBV"/>
                         <outlet property="employeeChart" destination="gcs-tl-TqT" id="i8O-70-H8s"/>
+                        <outlet property="ordersDataGrid" destination="whf-Ed-odf" id="X5h-Uv-gpR"/>
                         <outlet property="ordersGauge" destination="HXl-Ce-E0e" id="3gU-Cf-hor"/>
                         <outlet property="shippersChart" destination="GsH-Tk-AkE" id="LEX-gZ-xCd"/>
                         <outlet property="summaryContainer" destination="K9e-wy-Jkh" id="DpA-UH-GOR"/>

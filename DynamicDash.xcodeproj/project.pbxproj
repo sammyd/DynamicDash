@@ -53,6 +53,8 @@
 		22AB55AC191FEA4D00BC2E94 /* SCYellowColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55AB191FEA4D00BC2E94 /* SCYellowColourTheme.m */; };
 		22AB55AF191FEABE00BC2E94 /* SCPinkColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55AE191FEABE00BC2E94 /* SCPinkColourTheme.m */; };
 		22AB55B2191FEB4100BC2E94 /* SCColourThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AB55B1191FEB4100BC2E94 /* SCColourThemeManager.m */; };
+		22BB97AC19440E010005B7AB /* SCOrdersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB97AB19440E010005B7AB /* SCOrdersDataProvider.m */; };
+		22BB97AD194429810005B7AB /* ShinobiGrids.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221F4ACF191A5DEC00390D6B /* ShinobiGrids.framework */; };
 		D6758637664448D9BFFD4531 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB31DD033346470E8FBD429C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		22AB55AE191FEABE00BC2E94 /* SCPinkColourTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPinkColourTheme.m; sourceTree = "<group>"; };
 		22AB55B0191FEB4100BC2E94 /* SCColourThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCColourThemeManager.h; sourceTree = "<group>"; };
 		22AB55B1191FEB4100BC2E94 /* SCColourThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCColourThemeManager.m; sourceTree = "<group>"; };
+		22BB97AA19440E010005B7AB /* SCOrdersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCOrdersDataProvider.h; sourceTree = "<group>"; };
+		22BB97AB19440E010005B7AB /* SCOrdersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCOrdersDataProvider.m; sourceTree = "<group>"; };
 		34375A98A44147BCA5D46641 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EB31DD033346470E8FBD429C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22BB97AD194429810005B7AB /* ShinobiGrids.framework in Frameworks */,
 				221F4AC81917CF7700390D6B /* libsqlite3.dylib in Frameworks */,
 				221F4AC61917CF6700390D6B /* ShinobiGauges.framework in Frameworks */,
 				221F4AC01917CC9700390D6B /* CoreText.framework in Frameworks */,
@@ -235,6 +240,7 @@
 				221F4AF5191D1FC100390D6B /* Gauge Enhancements */,
 				221F4AE7191C0FF800390D6B /* Colours */,
 				221F4AE0191B285B00390D6B /* Utils */,
+				22BB97A919440B9B0005B7AB /* Grids */,
 				221F4AD6191AF90C00390D6B /* Specialist Charts */,
 				221F4AC91919291800390D6B /* Data Layer */,
 				221F4A931917CA9600390D6B /* SCAppDelegate.h */,
@@ -382,6 +388,15 @@
 				22635888193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m */,
 			);
 			name = "Range Annotation";
+			sourceTree = "<group>";
+		};
+		22BB97A919440B9B0005B7AB /* Grids */ = {
+			isa = PBXGroup;
+			children = (
+				22BB97AA19440E010005B7AB /* SCOrdersDataProvider.h */,
+				22BB97AB19440E010005B7AB /* SCOrdersDataProvider.m */,
+			);
+			name = Grids;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,6 +562,7 @@
 				221F4AF4191C193B00390D6B /* SCColourableChartTheme.m in Sources */,
 				221F4AFF191D799E00390D6B /* SCDataPointAnimator.m in Sources */,
 				2263588B193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m in Sources */,
+				22BB97AC19440E010005B7AB /* SCOrdersDataProvider.m in Sources */,
 				2263588C193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m in Sources */,
 				221F4AF8191D1FDC00390D6B /* SGauge+SpringAnimation.m in Sources */,
 				22AB55AC191FEA4D00BC2E94 /* SCYellowColourTheme.m in Sources */,

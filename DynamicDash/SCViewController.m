@@ -8,7 +8,6 @@
 
 #import "SCViewController.h"
 #import "SCNorthwindData.h"
-#import <ShinobiCharts/ShinobiChart.h>
 #import "SCMultiAxisCategoryDataSource.h"
 #import "SCColourThemeManager.h"
 #import "SCColourableChartTheme.h"
@@ -17,6 +16,7 @@
 #import "SCAnimatingPieChartDatasource.h"
 #import "NSDate+Quarterly.h"
 #import "SCSIMultiplierGaugeLabelDelegate.h"
+#import "SCOrdersDataProvider.h"
 
 @interface SCViewController () <SCRangeHighlightChartDelegate>
 
@@ -24,6 +24,7 @@
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *categoryDatasource;
 @property (nonatomic, strong) SCMultiAxisCategoryDataSource *employeeDatasource;
 @property (nonatomic, strong) SCAnimatingPieChartDatasource *shippersDatasource;
+@property (nonatomic, strong) SCOrdersDataProvider *ordersDataProvider;
 @property (nonatomic, strong) SCSIMultiplierGaugeLabelDelegate *gaugeDelegate;
 @property (nonatomic, strong) SCColourThemeManager *colourThemeManager;
 
@@ -69,6 +70,9 @@
     [self prepareOrdersGaugeSinceBeginningOfYear:1998];
     
     [self setYear:1997 quarter:1];
+    
+    NSArray *orders = [self.northwind orderDetailsFromDate:[NSDate firstDayOfQuarter:3 year:1997] toDate:[NSDate lastDayOfQuarter:3 year:1997]];
+    self.ordersDataProvider = [[SCOrdersDataProvider alloc] initWithDataGrid:self.ordersDataGrid orders:orders];
 }
 
 - (void)setYear:(NSUInteger)year quarter:(NSUInteger)quarter

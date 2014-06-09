@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ShinobiCharts/ShinobiChart.h>
 #import <ShinobiGauges/ShinobiGauges.h>
+#import <ShinobiGrids/ShinobiDataGrid.h>
 #import "SCRangeHighlightChart.h"
 
 @interface SCViewController : UIViewController
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIView *summaryContainer;
 @property (weak, nonatomic) IBOutlet SGaugeRadial *ordersGauge;
 @property (weak, nonatomic) IBOutlet ShinobiChart *shippersChart;
+@property (weak, nonatomic) IBOutlet ShinobiDataGrid *ordersDataGrid;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colourSegment;
 - (IBAction)handleSegmentChanged:(id)sender;
