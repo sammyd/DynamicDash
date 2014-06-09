@@ -7,10 +7,12 @@
 //
 
 #import "SCOrdersDataProvider.h"
+#import "SCOrderDetail.h"
 
 @interface SCOrdersDataProvider ()
 
 @property (nonatomic, strong, readwrite) ShinobiDataGrid *dataGrid;
+@property (nonatomic, strong) NSArray *orders;
 @property (nonatomic, strong) SDataGridDataSourceHelper *datasourceHelper;
 
 @end
@@ -24,7 +26,7 @@
     if(self) {
         self.dataGrid = dataGrid;
         [self commonInit];
-        self.orders = orders;
+        [self createOrdersFromDicts:orders];
     }
     return self;
 }
@@ -34,19 +36,11 @@
     self.datasourceHelper = [[SDataGridDataSourceHelper alloc] initWithDataGrid:self.dataGrid];
     
     // Prepare columns
-    NSArray *columnSpecs = @[
-                             @[@"ID", @"OrderID"],
-                             @[@"Date", @"OrderDate"],
-                             @[@"Required", @"RequiredDate"],
-                             @[@"Shipped", @"ShippedDate"],
-                             @[@"First", @"FirstName"],
-                             @[@"Last", @"LastName"],
-                             @[@"Company", @"CompanyName"],
-                             @[@"Total", @"OrderTotal"]
-                             ];
+    NSArray *propertyNames = [SCOrderDetail propertyNames];
+    NSArray *propertyTitles = [SCOrderDetail propertyTitles];
     
-    [columnSpecs enumerateObjectsUsingBlock:^(NSArray *colSpec, NSUInteger idx, BOOL *stop) {
-        SDataGridColumn *col = [SDataGridColumn columnWithTitle:colSpec[0] forProperty:colSpec[1]];
+    [propertyNames enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
+        SDataGridColumn *col = [SDataGridColumn columnWithTitle:propertyTitles[idx] forProperty:propertyName];
         [self.dataGrid addColumn:col];
     }];
 }
@@ -59,7 +53,18 @@
     }
 }
 
+
 #pragma mark - Utility methods
+- (void)createOrdersFromDicts:(NSArray *)dicts
+{
+    NSMutableArray *orders = [NSMutableArray array];
+    [dicts enumerateObjectsUsingBlock:^(NSDictionary *orderDict, NSUInteger idx, BOOL *stop) {
+        SCOrderDetail *order = [SCOrderDetail orderDetailWithDictionary:orderDict];
+        [orders addObject:order];
+    }];
+    self.orders = [orders copy];
+}
+
 - (void)updateData
 {
     self.datasourceHelper.data = self.orders;

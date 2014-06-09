@@ -12,7 +12,6 @@
 @interface SCOrdersDataProvider : NSObject
 
 @property (nonatomic, strong, readonly) ShinobiDataGrid *dataGrid;
-@property (nonatomic, strong) NSArray *orders;
 
 - (instancetype)initWithDataGrid:(ShinobiDataGrid *)dataGrid orders:(NSArray *)orders;
 

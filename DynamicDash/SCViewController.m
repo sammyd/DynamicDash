@@ -71,7 +71,9 @@
     
     [self setYear:1997 quarter:1];
     
-    NSArray *orders = [self.northwind orderDetailsFromDate:[NSDate firstDayOfQuarter:3 year:1997] toDate:[NSDate lastDayOfQuarter:3 year:1997]];
+    NSArray *orders = [self.northwind orderDetailsFromDate:[NSDate firstDayOfQuarter:1 year:1998]
+                                                    toDate:[NSDate lastDayOfQuarter:2 year:1998]];
+    NSLog(@"%@", orders);
     self.ordersDataProvider = [[SCOrdersDataProvider alloc] initWithDataGrid:self.ordersDataGrid orders:orders];
 }
 
