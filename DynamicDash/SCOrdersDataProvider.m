@@ -90,6 +90,16 @@
             df.locale = [NSLocale systemLocale];
         });
         return [df stringFromDate:date];
+    } else if ([propertyKey isEqualToString:@"OrderTotal"]) {
+        static NSNumberFormatter *nf = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            nf = [NSNumberFormatter new];
+            nf.numberStyle = NSNumberFormatterCurrencyStyle;
+            [nf setCurrencySymbol:@"$"];
+            nf.locale = [NSLocale systemLocale];
+        });
+        return [nf stringFromNumber:[object valueForKey:propertyKey]];
     }
     // By default
     return nil;
