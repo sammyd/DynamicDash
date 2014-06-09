@@ -9,6 +9,7 @@
 #import "SCAppDelegate.h"
 #import <ShinobiGauges/ShinobiGauges.h>
 #import <ShinobiCharts/ShinobiCharts.h>
+#import <ShinobiGrids/ShinobiGrids.h>
 
 @implementation SCAppDelegate
 
@@ -18,7 +19,7 @@
     
     [ShinobiCharts setLicenseKey:@""];
     [ShinobiGauges setLicenseKey:@""];
-    
+    [ShinobiGrids setLicenseKey:@""];
     return YES;
 }
 							
