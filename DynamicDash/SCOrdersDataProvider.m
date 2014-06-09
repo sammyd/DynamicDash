@@ -9,7 +9,7 @@
 #import "SCOrdersDataProvider.h"
 #import "SCOrderDetail.h"
 
-@interface SCOrdersDataProvider ()
+@interface SCOrdersDataProvider () <SDataGridDataSourceHelperDelegate>
 
 @property (nonatomic, strong, readwrite) ShinobiDataGrid *dataGrid;
 @property (nonatomic, strong) NSArray *orders;
@@ -34,6 +34,7 @@
 - (void)commonInit
 {
     self.datasourceHelper = [[SDataGridDataSourceHelper alloc] initWithDataGrid:self.dataGrid];
+    self.datasourceHelper.delegate = self;
     
     // Prepare columns
     NSArray *propertyNames = [SCOrderDetail propertyNames];
@@ -68,6 +69,27 @@
 - (void)updateData
 {
     self.datasourceHelper.data = self.orders;
+}
+
+#pragma mark - SDataGridDataSourceHelperDelegate methods
+- (id)dataGridDataSourceHelper:(SDataGridDataSourceHelper *)helper displayValueForProperty:(NSString *)propertyKey withSourceObject:(id)object
+{
+    if([propertyKey hasSuffix:@"Date"]) {
+        id date = [object valueForKey:propertyKey];
+        if(date == [NSNull null]) {
+            return @"-";
+        }
+        // We must have an NSDate
+        static NSDateFormatter *df = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            df = [NSDateFormatter new];
+            df.dateStyle = NSDateFormatterShortStyle;
+        });
+        return [df stringFromDate:date];
+    }
+    // By default
+    return nil;
 }
 
 @end
