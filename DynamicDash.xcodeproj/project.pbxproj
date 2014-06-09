@@ -45,6 +45,7 @@
 		221F4B08191E6A4800390D6B /* SCRedColourTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B07191E6A4800390D6B /* SCRedColourTheme.m */; };
 		221F4B0B191FC25200390D6B /* SCAnnotationAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */; };
 		225AFD0419458230000CE05A /* SCOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 225AFD0319458230000CE05A /* SCOrderDetail.m */; };
+		225AFD0719458EED000CE05A /* SCDashDataGridTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 225AFD0619458EED000CE05A /* SCDashDataGridTheme.m */; };
 		22635889193A52750055CBE5 /* MomentumAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635881193A52750055CBE5 /* MomentumAnimation.m */; };
 		2263588A193A52750055CBE5 /* ShinobiRangeAnnotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635884193A52750055CBE5 /* ShinobiRangeAnnotationManager.m */; };
 		2263588B193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22635886193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m */; };
@@ -131,6 +132,8 @@
 		221F4B0A191FC25200390D6B /* SCAnnotationAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnnotationAnimator.m; sourceTree = "<group>"; };
 		225AFD0219458230000CE05A /* SCOrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCOrderDetail.h; sourceTree = "<group>"; };
 		225AFD0319458230000CE05A /* SCOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCOrderDetail.m; sourceTree = "<group>"; };
+		225AFD0519458EED000CE05A /* SCDashDataGridTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDashDataGridTheme.h; sourceTree = "<group>"; };
+		225AFD0619458EED000CE05A /* SCDashDataGridTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDashDataGridTheme.m; sourceTree = "<group>"; };
 		22635880193A52750055CBE5 /* MomentumAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentumAnimation.h; sourceTree = "<group>"; };
 		22635881193A52750055CBE5 /* MomentumAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentumAnimation.m; sourceTree = "<group>"; };
 		22635882193A52750055CBE5 /* ShinobiRangeAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiRangeAnnotationDelegate.h; sourceTree = "<group>"; };
@@ -400,6 +403,8 @@
 				22BB97AB19440E010005B7AB /* SCOrdersDataProvider.m */,
 				225AFD0219458230000CE05A /* SCOrderDetail.h */,
 				225AFD0319458230000CE05A /* SCOrderDetail.m */,
+				225AFD0519458EED000CE05A /* SCDashDataGridTheme.h */,
+				225AFD0619458EED000CE05A /* SCDashDataGridTheme.m */,
 			);
 			name = Grids;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				221F4AFF191D799E00390D6B /* SCDataPointAnimator.m in Sources */,
 				2263588B193A52750055CBE5 /* ShinobiRangeHandleAnnotation.m in Sources */,
 				22BB97AC19440E010005B7AB /* SCOrdersDataProvider.m in Sources */,
+				225AFD0719458EED000CE05A /* SCDashDataGridTheme.m in Sources */,
 				2263588C193A52750055CBE5 /* ShinobiRangeSelectionAnnotation.m in Sources */,
 				221F4AF8191D1FDC00390D6B /* SGauge+SpringAnimation.m in Sources */,
 				22AB55AC191FEA4D00BC2E94 /* SCYellowColourTheme.m in Sources */,

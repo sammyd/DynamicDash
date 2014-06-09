@@ -39,9 +39,11 @@
     // Prepare columns
     NSArray *propertyNames = [SCOrderDetail propertyNames];
     NSArray *propertyTitles = [SCOrderDetail propertyTitles];
+    NSArray *columnWidths = @[@50, @70, @70, @70, @160, @110, @70];
     
     [propertyNames enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
         SDataGridColumn *col = [SDataGridColumn columnWithTitle:propertyTitles[idx] forProperty:propertyName];
+        col.width = columnWidths[idx];
         [self.dataGrid addColumn:col];
     }];
 }

@@ -29,7 +29,7 @@
 
 + (NSArray *)propertyTitles
 {
-    return @[@"ID", @"Date", @"Required", @"Shipped",
+    return @[@"ID", @"Ordered", @"Required", @"Shipped",
             @"Customer", @"Sold By", @"Total"];
 }
 

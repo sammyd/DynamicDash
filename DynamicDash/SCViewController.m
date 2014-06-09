@@ -17,6 +17,7 @@
 #import "NSDate+Quarterly.h"
 #import "SCSIMultiplierGaugeLabelDelegate.h"
 #import "SCOrdersDataProvider.h"
+#import "SCDashDataGridTheme.h"
 
 @interface SCViewController () <SCRangeHighlightChartDelegate>
 
@@ -62,19 +63,19 @@
     
     self.shippersDatasource = [[SCAnimatingPieChartDatasource alloc] initWithChart:self.shippersChart categories:[self.northwind shippers]];
     
-    self.colourThemeManager = [SCColourThemeManager new];
-    
-    [self setColourThemeWithName:@"blue"];
-    
     self.gaugeDelegate = [SCSIMultiplierGaugeLabelDelegate new];
     [self prepareOrdersGaugeSinceBeginningOfYear:1998];
     
     [self setYear:1997 quarter:1];
     
+    // Prepare the orders DataGrid
     NSArray *orders = [self.northwind orderDetailsFromDate:[NSDate firstDayOfQuarter:1 year:1998]
                                                     toDate:[NSDate lastDayOfQuarter:2 year:1998]];
-    NSLog(@"%@", orders);
     self.ordersDataProvider = [[SCOrdersDataProvider alloc] initWithDataGrid:self.ordersDataGrid orders:orders];
+    
+    // Apply the initial theme
+    self.colourThemeManager = [SCColourThemeManager new];
+    [self setColourThemeWithName:@"blue"];
 }
 
 - (void)setYear:(NSUInteger)year quarter:(NSUInteger)quarter
@@ -204,6 +205,13 @@
     [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
         label.textColor = colourTheme.darkColour;
     }];
+    
+    // Apply the theme to the datagrid
+    [self.ordersDataGrid applyTheme:[SCDashDataGridTheme themeWithColourTheme:colourTheme]];
+    self.ordersDataGrid.defaultHeaderRowHeight = @35;
+    self.ordersDataGrid.defaultRowHeight = @25;
+    self.ordersDataGrid.selectionMode = SDataGridSelectionModeNone;
+    [self.ordersDataGrid reload];
 }
 
 - (IBAction)handleSegmentChanged:(id)sender {
