@@ -39,7 +39,7 @@
     // Prepare columns
     NSArray *propertyNames = [SCOrderDetail propertyNames];
     NSArray *propertyTitles = [SCOrderDetail propertyTitles];
-    NSArray *columnWidths = @[@50, @70, @70, @70, @160, @110, @70];
+    NSArray *columnWidths = @[@50, @80, @80, @80, @160, @110, @70];
     
     [propertyNames enumerateObjectsUsingBlock:^(NSString *propertyName, NSUInteger idx, BOOL *stop) {
         SDataGridColumn *col = [SDataGridColumn columnWithTitle:propertyTitles[idx] forProperty:propertyName];
@@ -87,6 +87,7 @@
         dispatch_once(&onceToken, ^{
             df = [NSDateFormatter new];
             df.dateStyle = NSDateFormatterShortStyle;
+            df.locale = [NSLocale systemLocale];
         });
         return [df stringFromDate:date];
     }
