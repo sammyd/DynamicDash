@@ -19,6 +19,7 @@
 @property (nonatomic, strong) SChartLineSeries *lineSeries;
 @property (nonatomic, strong) SChartColumnSeries *columnSeries;
 @property (nonatomic, strong) SCDataPointAnimator *dpAnimator;
+@property (nonatomic, strong) CAGradientLayer *bgGradient;
 
 @end
 
@@ -31,6 +32,7 @@
         [self prepareChart:chart];
         self.categories = categories;
         [self prepareDataPoints];
+        [self prepareGradientLayer];
         
         self.dpAnimator = [[SCDataPointAnimator alloc] initWithPostWriteCallback:^{
             [self.chart reloadData];
@@ -71,17 +73,18 @@
 
 - (void)applyThemeColours:(NSArray *)themeColours
 {
-    self.lineSeries.style.lineColor = themeColours[0];
-    self.chart.backgroundColor = themeColours[1];
-    
     SChartAxis *leftYAxis = self.yAxes[0];
     leftYAxis.style.majorTickStyle.textAlignment = NSTextAlignmentRight;
     
     SChartAxis *rightYAxis = self.yAxes[1];
     rightYAxis.style.majorTickStyle.textAlignment = NSTextAlignmentLeft;
+    rightYAxis.style.majorGridLineStyle.showMajorGridLines = NO;
     
     [self.chart reloadData];
     [self.chart redrawChart];
+    
+    self.bgGradient.colors = @[(id)[themeColours[0] CGColor],
+                               (id)[themeColours[1] CGColor]];
 }
 
 
@@ -95,6 +98,7 @@
     SChartNumberAxis *firstYAxis = [SChartNumberAxis new];
     [chart addYAxis:firstYAxis];
     firstYAxis.rangePaddingHigh = @(5000);
+    firstYAxis.majorTickFrequency = @(10000);
     NSNumberFormatter *labelFormatter = [firstYAxis.labelFormatter numberFormatter];
     [labelFormatter setMultiplier:@0.001];
     [labelFormatter setMinimumFractionDigits:1];
@@ -103,6 +107,7 @@
     SChartNumberAxis *secondYAxis = [SChartNumberAxis new];
     secondYAxis.axisPosition = SChartAxisPositionReverse;
     secondYAxis.rangePaddingHigh = @(10);
+    secondYAxis.majorTickFrequency = @10;
     [chart addYAxis:secondYAxis];
     self.yAxes = @[firstYAxis, secondYAxis];
     
@@ -115,6 +120,16 @@
     chart.delegate = self;
     
     self.chart = chart;
+}
+
+- (void)prepareGradientLayer
+{
+    self.bgGradient = [CAGradientLayer layer];
+    self.bgGradient.bounds = self.chart.bounds;
+    self.bgGradient.position = CGPointMake(CGRectGetWidth(self.chart.bounds) / 2.0,
+                                           CGRectGetHeight(self.chart.bounds) / 2.0);
+    [self.chart.layer insertSublayer:self.bgGradient atIndex:0];
+    self.chart.layer.cornerRadius = 10;
 }
 
 - (void)prepareDataPoints
