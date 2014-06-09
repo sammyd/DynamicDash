@@ -34,5 +34,8 @@
 - (NSDictionary *)ordersPerEmployeeFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 - (NSDictionary *)ordersPerCategoryFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 
+#pragma mark - Orders Data
+- (NSArray *)orderDetailsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
+
 
 @end

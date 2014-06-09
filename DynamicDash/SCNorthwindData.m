@@ -258,6 +258,25 @@
 }
 
 
+- (NSArray *)orderDetailsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    
+    NSString *queryString = [NSString stringWithFormat:
+        @"SELECT Orders.OrderID, Orders.OrderDate, Orders.RequiredDate, Orders.ShippedDate, "
+         "    SUM(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS OrderTotal, "
+         "    Employees.FirstName, Employees.LastName, Customers.CompanyName "
+         "FROM Orders "
+         "JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID "
+         "JOIN [Order Details] ON Orders.OrderID = [Order Details].OrderID "
+         "JOIN Customers ON Orders.CustomerID = Customers.CustomerID "
+         "WHERE Orders.OrderDate BETWEEN DATETIME('%@') AND DATETIME('%@') "
+         "GROUP BY Orders.OrderID "
+         "ORDER BY OrderDate DESC;",
+                             [self.ymdDF stringFromDate:fromDate],
+                             [self.ymdDF stringFromDate:toDate]];
+    return [self allValuesForQuery:queryString];
+}
+
 #pragma mark - Non-API methods
 - (SLStatement *)executeQuery:(NSString *)query
 {
